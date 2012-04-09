@@ -1,61 +1,71 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       Cake.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
+<title><?php echo $title_for_layout; ?></title>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+Configure::write('System.name','TOASTI');
+Configure::write('System.author','KMC des VWI ESTIEM Darmstadt');
 
-		echo $this->Html->css('cake.generic');
+echo $this->Html->css('bootstrap.min');
+echo $this->Html->css('bootstrap-responsive.min');
+echo $this->Html->script('bootstrap.min');
+echo $this->Html->script('bootstrap-collapse');
+echo $this->Html->script('bootstrap-dropdown');
+echo $this->Html->script('jquery-1.7.2.min.js');
+echo $this->Html->script('cakebootstrap.js');
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-	?>
+echo $this->Html->meta('author',Configure::read('System.author'));
+
+echo $this->fetch('meta');
+echo $this->fetch('css');
+echo $this->fetch('script');
+?>
 </head>
-<body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+  <body>
 
-			<?php echo $this->Session->flash(); ?>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <?php echo $this->Html->link(Configure::read('System.name'),'/pages/home', array('class' => 'brand')); ?>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><?php echo $this->Html->link('Unternehmen','/companies/index'); ?></li>
+              <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
+              <li><?php echo $this->Html->link('VWI-Mitglieder','#'); ?></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li><p class="navbar-text">Eingeloggt als asdf@vwi-darmstadt.de</a></li>
+              <li class="divider-vertical"></li>
+              <li><?php echo $this->Html->link('Logout','#'); ?></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
-</body>
+    <div class="container">
+
+     <?php echo $this->fetch('content'); ?>
+
+      <hr>
+
+      <footer>
+        <p>&copy; <?php echo Configure::read('System.author'); ?></p>
+      </footer>
+
+    </div>
+
+  </body>
 </html>

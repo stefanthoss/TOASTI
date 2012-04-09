@@ -1,3 +1,3 @@
-TOASTI (TOol for All STrategic Information) wird vom Knowledge Management Committee des VWI ESTIEM Darmstadt zur Verwaltung von vereinsinternen Informationen entwickelt. Das System soll allen Vereinsmitgliedern zur Verfügung stehen und bei verschiedenen Vereinsarbeiten helfen.
+TOASTI (TOol for All STrategic Information) wird vom Knowledge Management Committee des VWI ESTIEM Darmstadt zur Verwaltung von vereinsinternen Informationen entwickelt.
 
-Als Basis dienen CakePHP und Bootstrap.
+Als Basis dient CakePHP 2.1.
