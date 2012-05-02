@@ -46,9 +46,11 @@ echo $this->fetch('script');
               <li><?php echo $this->Html->link('Mitglieder','#'); ?></li>
             </ul>
             <ul class="nav pull-right">
-              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?></a></li>
+              <?php if(!empty($username)) { ?>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout','/users/logout'); ?></li>
+              <?php } ?>
             </ul>
           </div>
         </div>

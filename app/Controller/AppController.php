@@ -43,5 +43,8 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('home');
         $this->set('username', $this->Auth->user('username'));
+
+        /* custom authentification error message */
+        $this->Auth->authError = "Bitte logge dich ein.";
     }
 }
