@@ -1,4 +1,4 @@
-TOASTI
+﻿TOASTI
 ----------
 
 TOASTI (TOol for All STrategic Information) wird vom Knowledge Management Committee des [VWI ESTIEM Darmstadt](http://www.vwi.tu-darmstadt.de/) zur Verwaltung von vereinsinternen Informationen entwickelt.
@@ -15,6 +15,12 @@ TOASTI basiert auf folgenden Frameworks/Bibliotheken:
 * [Bootstrap Collapse Plugin](http://twitter.github.com/bootstrap/javascript.html#collapse)
 * [Bootstrap Dropdown Plugin](http://twitter.github.com/bootstrap/javascript.html#dropdowns)
 * [Cakephp-Bootstrappifier](https://github.com/mtkocak/Cakephp-Bootstrappifier) 2012-03-27
+
+
+Installation
+----------
+
+Zur Installation sollte zuerst eine kompatible CakePHP-Version installiert und die Konfigurationsdateien in /app/Config/ angepasst werden (die Konfigurationsdateien sind aus Sicherheitsgründen nicht im Repository vorhanden). Das Aufrufen des Root-Verzeichnises im Browser zeigt, ob die Konfiguration korrekt ist. Anschließend müssen die von TOASTI benötigten MySQL-Datenbanken erstellt (siehe Datei toasti_create_tables.sql) und TOASTI in das CakePHP-Installationsverzeichnis kopiert werden.
 
 
 Lizenz
