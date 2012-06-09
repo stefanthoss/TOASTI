@@ -50,6 +50,10 @@ echo $this->fetch('script');
               <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout','/users/logout'); ?></li>
+              <?php } else { ?>
+              <li><p class="navbar-text">Nicht eingeloggt</li>
+              <li class="divider-vertical"></li>
+              <li><?php echo $this->Html->link('Login','/users/login'); ?></li>
               <?php } ?>
             </ul>
           </div>
