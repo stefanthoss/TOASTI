@@ -15,11 +15,17 @@
     <?php foreach ($companies as $company): ?>
     <tr>
         <td><?php echo $company['Company']['name']; ?></td>
-        <td><?php echo $company['Company']['street']; ?></td>
+        <td><?php echo $company['Company']['street']; ?><br /><?php echo $company['Company']['street2']; ?></td>
         <td><?php echo $company['Company']['zip']; ?></td>
         <td><?php echo $company['Company']['city']; ?></td>
         <td>-</td>
-        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn')); ?></td>
+        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn'));
+echo $this->Form->postLink(
+                'Löschen',
+                array('action' => 'delete', $company['Company']['id']),
+                array('confirm' => 'Bist du dir sicher?', 'class' => 'btn btn-danger')); ?>
+
+</td>
     </tr>
     <?php endforeach; ?>
 

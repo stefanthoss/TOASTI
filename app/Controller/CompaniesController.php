@@ -16,4 +16,14 @@ public function add() {
             }
         }
     }
+
+public function delete($id) {
+    if ($this->request->is('get')) {
+        throw new MethodNotAllowedException();
+    }
+    if ($this->Company->delete($id)) {
+        $this->Session->setFlash('Das Unternehmen (ID ' . $id . ') wurde gelöscht.');
+        $this->redirect(array('action' => 'index'));
+    }
+}
 }
