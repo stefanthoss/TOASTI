@@ -9,7 +9,7 @@ USE `toasti_db` ;
 -- Table `toasti_db`.`companies`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`companies` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `street` VARCHAR(45) NULL ,
   `street2` VARCHAR(45) NULL ,
@@ -27,7 +27,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`contact_persons`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_persons` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `position` VARCHAR(45) NULL ,
   `department` VARCHAR(45) NULL ,
@@ -53,7 +53,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`events`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`events` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
@@ -69,8 +69,10 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`users` (
   `username` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(45) NULL ,
   `name` VARCHAR(45) NULL ,
+  `surname` VARCHAR(45) NULL ,
   `role` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
@@ -80,7 +82,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`contacts`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`contacts` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `date` DATE NOT NULL ,
   `cooperation_kind` VARCHAR(45) NULL ,
   `note` TEXT NULL ,
@@ -100,7 +102,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`service_branches`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_branches` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
@@ -112,7 +114,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`service_providers`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_providers` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `contact_person` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
@@ -135,7 +137,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`service_orders`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_orders` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `date` DATE NOT NULL ,
   `description` VARCHAR(45) NULL ,
   `rating` TINYINT NULL ,

@@ -24,3 +24,4 @@
     <?php endforeach; ?>
 
 </table>
+<p><?php echo $this->Html->link('Neues Unternehmen hinzufügen', array('controller' => 'companies', 'action' => 'add'), array('class' => 'btn')); ?></p>
