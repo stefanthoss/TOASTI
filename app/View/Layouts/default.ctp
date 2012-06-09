@@ -43,7 +43,7 @@ echo $this->fetch('script');
             <ul class="nav">
               <li><?php echo $this->Html->link('Unternehmen','/companies/index'); ?></li>
               <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
-              <li><?php echo $this->Html->link('Mitglieder','#'); ?></li>
+              <li><?php echo $this->Html->link('Mitglieder','/users/index'); ?></li>
             </ul>
             <ul class="nav pull-right">
               <?php if(!empty($username)) { ?>
