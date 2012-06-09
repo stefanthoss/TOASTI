@@ -1,4 +1,4 @@
-<?php $this->set('title_for_layout','Mitgliedersatenbank'); ?>
+<?php $this->set('title_for_layout','Mitgliederdatenbank'); ?>
 
 <h1>Mitglieder</h1>
 <div class="alert">

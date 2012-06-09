@@ -1,14 +1,15 @@
+<?php $this->set('title_for_layout','Nutzerregistrierung'); ?>
 <div class="users form">
 <?php echo $this->Form->create('User');?>
     <fieldset>
-        <legend><?php echo __('Add User'); ?></legend>
+        <legend><?php echo __('Nutzer hinzufügen'); ?></legend>
     <?php
-        echo $this->Form->input('username');
-        echo $this->Form->input('password');
-        echo $this->Form->input('name');
-        echo $this->Form->input('surname');
-        echo $this->Form->input('role', array(
-            'options' => array('admin' => 'Admin', 'author' => 'Autor', 'member' => 'Mitglied')
+        echo $this->Form->input('username', array('label' => 'Nutzername'));
+        echo $this->Form->input('password', array('label' => 'Passwort'));
+        echo $this->Form->input('name', array('label' => 'Vorname'));
+        echo $this->Form->input('surname', array('label' => 'Nachname'));
+        echo $this->Form->input('role', array('label' => 'Rolle',
+            'options' => array('admin' => 'Admin', 'board' => 'Vorstand', 'member' => 'Mitglied')
         ));
     ?>
     </fieldset>

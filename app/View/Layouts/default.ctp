@@ -54,6 +54,7 @@ echo $this->fetch('script');
               <li><p class="navbar-text">Nicht eingeloggt</li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Login','/users/login'); ?></li>
+              <li><?php echo $this->Html->link('Registrierung','/users/add'); ?></li>
               <?php } ?>
             </ul>
           </div>
