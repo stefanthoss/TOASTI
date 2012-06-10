@@ -8,8 +8,9 @@
         <th>Straße</th>
         <th>PLZ</th>
         <th>Stadt</th>
-        <th>Letzter Kontakt</th>
-        <th></th>
+        <th>Land</th>
+        <th>Notiz</th>
+        <th>Aktionen</th>
     </tr>
 
     <?php foreach ($companies as $company): ?>
@@ -18,8 +19,9 @@
         <td><?php echo $company['Company']['street']; ?><br /><?php echo $company['Company']['street2']; ?></td>
         <td><?php echo $company['Company']['zip']; ?></td>
         <td><?php echo $company['Company']['city']; ?></td>
-        <td>-</td>
-        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn')); ?>&nbsp;<?php
+        <td><?php echo $company['Company']['country']; ?></td>
+        <td><?php if(!empty($company['Company']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
+        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn')); ?>&nbsp;<?php echo $this->Html->link('Bearbeiten', array('action' => 'edit', $company['Company']['id']), array('class' => 'btn btn-info')); ?>&nbsp;<?php
 echo $this->Form->postLink(
                 'Löschen',
                 array('action' => 'delete', $company['Company']['id']),

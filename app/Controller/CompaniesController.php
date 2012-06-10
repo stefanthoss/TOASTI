@@ -26,4 +26,18 @@ public function delete($id) {
         $this->redirect(array('action' => 'index'));
     }
 }
+
+public function edit($id = null) {
+    $this->Company->id = $id;
+    if ($this->request->is('get')) {
+        $this->request->data = $this->Company->read();
+    } else {
+        if ($this->Company->save($this->request->data)) {
+            $this->Session->setFlash('Die Unternehmensdaten wurden gespeichert.');
+            $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash('Die Unternehmensdaten konnten nicht gespeichert werden.');
+        }
+    }
+}
 }
