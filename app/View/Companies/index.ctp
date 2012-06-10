@@ -19,7 +19,7 @@
         <td><?php echo $company['Company']['zip']; ?></td>
         <td><?php echo $company['Company']['city']; ?></td>
         <td>-</td>
-        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn'));
+        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn')); ?>&nbsp;<?php
 echo $this->Form->postLink(
                 'Löschen',
                 array('action' => 'delete', $company['Company']['id']),

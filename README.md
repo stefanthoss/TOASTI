@@ -20,7 +20,7 @@ TOASTI basiert auf folgenden Frameworks/Bibliotheken:
 Installation
 ----------
 
-Zur Installation sollte zuerst eine kompatible CakePHP-Version installiert und die Konfigurationsdateien in /app/Config/ angepasst werden (die Konfigurationsdateien sind aus Sicherheitsgründen nicht im Repository vorhanden). Das Aufrufen des Root-Verzeichnises im Browser zeigt, ob die Konfiguration korrekt ist. Anschließend müssen die von TOASTI benötigten MySQL-Datenbanken erstellt (siehe Datei toasti_create_tables.sql) und TOASTI in das CakePHP-Installationsverzeichnis kopiert werden.
+Zur Installation sollte zuerst eine kompatible CakePHP-Version installiert und die Konfigurationsdateien in /app/Config/ angepasst werden (die Konfigurationsdateien sind aus Sicherheitsgründen nicht im Repository vorhanden). Das Aufrufen des Root-Verzeichnises von CakePHP im Browser zeigt, ob die Konfiguration korrekt ist. Anschließend müssen die von TOASTI benötigten MySQL-Datenbanken erstellt (siehe Datei doc/toasti_create_tables.sql) und TOASTI in das CakePHP-Installationsverzeichnis kopiert werden.
 
 
 Lizenz
