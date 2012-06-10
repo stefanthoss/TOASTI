@@ -20,7 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Controller', 'Controller');
+App::uses('Controller', 'Controller', 'CakeEmail', 'Network/Email');
 
 /**
  * Application Controller
@@ -32,4 +32,18 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'pages', 'action' => 'home'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'home')
+        )
+    );
+
+    public function beforeFilter() {
+        $this->set('username', $this->Auth->user('username'));
+
+        /* custom authentification error message */
+        $this->Auth->authError = "Bitte logge dich ein.";
+    }
 }

@@ -43,12 +43,19 @@ echo $this->fetch('script');
             <ul class="nav">
               <li><?php echo $this->Html->link('Unternehmen','/companies/index'); ?></li>
               <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
-              <li><?php echo $this->Html->link('Mitglieder','#'); ?></li>
+              <li><?php echo $this->Html->link('Mitglieder','/users/index'); ?></li>
             </ul>
             <ul class="nav pull-right">
-              <li><p class="navbar-text">Eingeloggt als mitglied@vwi-darmstadt.de</a></li>
+              <?php if(!empty($username)) { ?>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?></li>
               <li class="divider-vertical"></li>
-              <li><?php echo $this->Html->link('Logout','#'); ?></li>
+              <li><?php echo $this->Html->link('Logout','/users/logout'); ?></li>
+              <?php } else { ?>
+              <li><p class="navbar-text">Nicht eingeloggt</li>
+              <li class="divider-vertical"></li>
+              <li><?php echo $this->Html->link('Login','/users/login'); ?></li>
+              <li><?php echo $this->Html->link('Registrierung','/users/add'); ?></li>
+              <?php } ?>
             </ul>
           </div>
         </div>
