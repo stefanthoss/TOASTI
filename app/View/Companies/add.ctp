@@ -9,7 +9,7 @@
         echo $this->Form->input('street2', array('label' => 'Adresszusatz'));
         echo $this->Form->input('zip', array('label' => 'PLZ'));
         echo $this->Form->input('city', array('label' => 'Stadt'));
-        echo $this->Form->input('country', array('label' => 'Land'));
+        echo $this->Form->input('country', array('label' => 'Land', 'value' => 'Deutschland'));
         echo $this->Form->input('note', array('label' => 'Notiz', 'rows' => '4'));
     ?>
     </fieldset>

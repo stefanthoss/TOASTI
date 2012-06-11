@@ -16,9 +16,14 @@ class User extends AppModel {
         ),
         'role' => array(
             'valid' => array(
-                'rule' => array('inList', array('admin', 'author', 'member')),
+                'rule' => array('inList', array('admin', 'board', 'member')),
                 'message' => 'Eine gültige Rolle wird benötigt.',
                 'allowEmpty' => false
+            )
+        ),
+        'active' => array(
+            'valid' => array(
+                'rule' => array('boolean')
             )
         )
     );

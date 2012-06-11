@@ -47,7 +47,7 @@ echo $this->fetch('script');
             </ul>
             <ul class="nav pull-right">
               <?php if(!empty($username)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?></li>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?> (<?php echo $role; ?>)</li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout','/users/logout'); ?></li>
               <?php } else { ?>

@@ -11,6 +11,7 @@
         echo $this->Form->input('role', array('label' => 'Rolle',
             'options' => array('admin' => 'Admin', 'board' => 'Vorstand', 'member' => 'Mitglied')
         ));
+        echo $this->Form->input('active', array('label' => 'Aktiv'));
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

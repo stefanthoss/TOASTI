@@ -9,7 +9,7 @@ Dies ist (bisher) keine vollständige Mitgliederdatenbank, sondern nur eine Übe
         <th>Nutzername</th>
         <th>Vorname</th>
         <th>Nachname</th>
-        <th>Rolle</th>
+<?php if($role == 'admin') { echo '<th>Rolle</th><th>Aktiv</th>'; } ?>
     </tr>
 
     <?php foreach ($users as $user): ?>
@@ -17,7 +17,12 @@ Dies ist (bisher) keine vollständige Mitgliederdatenbank, sondern nur eine Übe
         <td><?php echo $user['User']['username']; ?></td>
         <td><?php echo $user['User']['name']; ?></td>
         <td><?php echo $user['User']['surname']; ?></td>
-        <td><?php echo $user['User']['role']; ?></td>
+<?php
+if($role == 'admin') {
+echo '<td>'.$user['User']['role'].'</td>';
+if($user['User']['active'] == 1) { echo '<td><i class="icon-ok"></i></td>'; } else { echo '<td><i class="icon-remove"></i></td>'; }
+}
+?>
     </tr>
     <?php endforeach; ?>
 

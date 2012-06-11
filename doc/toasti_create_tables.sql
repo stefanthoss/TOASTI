@@ -71,6 +71,7 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`users` (
   `name` VARCHAR(45) NULL ,
   `surname` VARCHAR(45) NULL ,
   `role` VARCHAR(45) NULL ,
+  `active` TINYINT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = MyISAM

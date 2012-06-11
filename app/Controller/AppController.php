@@ -41,7 +41,10 @@ class AppController extends Controller {
     );
 
     public function beforeFilter() {
+	$this->Auth->userScope = array('User.active' => 1);
+
         $this->set('username', $this->Auth->user('username'));
+	$this->set('role', $this->Auth->user('role'));
 
         /* custom authentification error message */
         $this->Auth->authError = "Bitte logge dich ein.";
