@@ -8,10 +8,7 @@
         echo $this->Form->input('password', array('label' => 'Passwort'));
         echo $this->Form->input('name', array('label' => 'Vorname'));
         echo $this->Form->input('surname', array('label' => 'Nachname'));
-        echo $this->Form->input('role', array('label' => 'Rolle',
-            'options' => array('admin' => 'Admin', 'board' => 'Vorstand', 'member' => 'Mitglied')
-        ));
-        echo $this->Form->input('active', array('label' => 'Aktiv'));
+        echo $this->Form->input('role', array('label' => 'Rolle'));
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

@@ -66,18 +66,13 @@ class UsersController extends AppController {
     }
 
 public function login() {
+    if ($this->request->is('post')) {
         if ($this->Auth->login()) {
-		/* check if account is active */
-		if($this->Auth->user('active') == 1) {
-			$this->redirect($this->Auth->redirect());
-		} else {
-                        $this->Auth->logout();
-			$this->redirect(array('action' => 'login'));
-                        $this->Session->setFlash('Der Account wurde noch nicht aktiviert.');
-		}
+            $this->redirect($this->Auth->redirect());
         } else {
             $this->Session->setFlash('Nutzername oder Passwort sind falsch.');
         }
+    }
 }
 
 public function logout() {
