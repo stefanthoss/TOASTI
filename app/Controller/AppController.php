@@ -47,4 +47,4 @@ class AppController extends Controller {
         /* custom authentification error message */
         $this->Auth->authError = "Bitte logge dich ein.";
     }
-}
+}?>
