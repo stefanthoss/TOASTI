@@ -20,7 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Controller', 'Controller', 'CakeEmail', 'Network/Email');
+App::uses('Controller', 'Controller');
 
 /**
  * Application Controller
@@ -54,3 +54,4 @@ class AppController extends Controller {
         $this->Auth->authError = "Bitte logge dich ein.";
     }
 }
+?>
