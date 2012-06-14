@@ -9,7 +9,6 @@ Dies ist (bisher) keine vollständige Mitgliederdatenbank, sondern nur eine Übe
         <th>Nutzername</th>
         <th>Vorname</th>
         <th>Nachname</th>
-<?php if($role >= 10) { echo '<th>Rolle</th>'; } ?>
     </tr>
 
     <?php foreach ($users as $user): ?>
@@ -17,11 +16,6 @@ Dies ist (bisher) keine vollständige Mitgliederdatenbank, sondern nur eine Übe
         <td><?php echo $user['User']['username']; ?></td>
         <td><?php echo $user['User']['name']; ?></td>
         <td><?php echo $user['User']['surname']; ?></td>
-<?php
-if($role >= 10) {
-echo '<td>'.$user['User']['role'].'</td>';
-}
-?>
     </tr>
     <?php endforeach; ?>
 
