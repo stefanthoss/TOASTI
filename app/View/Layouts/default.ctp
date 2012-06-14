@@ -38,23 +38,22 @@ echo $this->fetch('script');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <?php echo $this->Html->link(Configure::read('System.name'),'/pages/home', array('class' => 'brand')); ?>
+          <?php echo $this->Html->link(Configure::read('System.name'), array('controller' => 'pages', 'action' => 'home'), array('class' => 'brand')); ?>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><?php echo $this->Html->link('Unternehmen','/companies/index'); ?></li>
+              <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
-              <li><?php echo $this->Html->link('Mitglieder','/users/index'); ?></li>
+              <li><?php echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>
             <ul class="nav pull-right">
               <?php if(!empty($username)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $username; ?> (Rolle <?php echo $role; ?>)</li>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $fullname; ?></li>
               <li class="divider-vertical"></li>
-              <li><?php echo $this->Html->link('Logout','/users/logout'); ?></li>
+              <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
               <?php } else { ?>
               <li><p class="navbar-text">Nicht eingeloggt</li>
               <li class="divider-vertical"></li>
-              <li><?php echo $this->Html->link('Login','/users/login'); ?></li>
-              <li><?php echo $this->Html->link('Registrierung','/users/add'); ?></li>
+              <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); ?></li>
               <?php } ?>
             </ul>
           </div>

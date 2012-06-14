@@ -2,7 +2,7 @@
 <div class="companies form">
 <?php echo $this->Form->create('Company');?>
     <fieldset>
-        <legend><?php echo __('Unternehmen hinzufügen'); ?></legend>
+        <legend>Unternehmen hinzufügen</legend>
     <?php
         echo $this->Form->input('name', array('label' => 'Name'));
         echo $this->Form->input('street', array('label' => 'Straße'));
@@ -13,5 +13,5 @@
         echo $this->Form->input('note', array('label' => 'Notiz', 'rows' => '4'));
     ?>
     </fieldset>
-<?php echo $this->Form->end(__('Hinzufügen'));?>
+<?php echo $this->Form->end('Hinzufügen');?>
 </div>

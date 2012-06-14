@@ -21,12 +21,13 @@ Installation
 ----------
 
 Zur Installation sollte zuerst eine kompatible CakePHP-Version installiert und die Konfigurationsdateien in /app/Config/ angepasst werden (die Konfigurationsdateien sind aus Sicherheitsgründen nicht im Repository vorhanden). Das Aufrufen des Root-Verzeichnises von CakePHP im Browser zeigt, ob die Konfiguration korrekt ist. Anschließend müssen die von TOASTI benötigten MySQL-Datenbanken erstellt (siehe Datei doc/toasti_create_tables.sql) und TOASTI in das CakePHP-Installationsverzeichnis kopiert werden.
+In der Datei /app/Controller/UsersController.php muss anschließend in Zeile 7 bei "$this->Auth->allow('add', 'logout');" der Kommentar entfernt werden. Dann kann man im Browser über toasti/users/add einen Administrator hinzuzufügen. Danach sollte die Zeile wieder auskommentiert werden, damit nur noch Administratoren andere Nutzer registrieren können.
 
 
 Lizenz
 ----------
 
-Copyright (C) 2012 VWI ESTIEM Darmstadt
+Copyright (C) 2012 VWI ESTIEM Hochschulgruppe TU Darmstadt e.V.
 
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
 
