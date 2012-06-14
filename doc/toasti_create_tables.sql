@@ -62,16 +62,28 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
+-- Table `toasti_db`.`groups`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`groups` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `toasti_db`.`users`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `username` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(45) NOT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(45) NULL ,
   `surname` VARCHAR(45) NOT NULL ,
+  `group_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  INDEX `fk_users_group1` (`group_id` ASC) )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
@@ -152,6 +164,57 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_orders` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+
+-- -----------------------------------------------------
+-- Table `toasti_db`.`aros_acos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`aros_acos` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `aro_id` INT(10) UNSIGNED NOT NULL ,
+  `aco_id` INT(10) UNSIGNED NOT NULL ,
+  `_create` CHAR(2) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NOT NULL DEFAULT '0' ,
+  `_read` CHAR(2) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NOT NULL DEFAULT '0' ,
+  `_update` CHAR(2) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NOT NULL DEFAULT '0' ,
+  `_delete` CHAR(2) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NOT NULL DEFAULT '0' ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_german1_ci;
+
+
+-- -----------------------------------------------------
+-- Table `toasti_db`.`aros`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`aros` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `parent_id` INT(10) NULL DEFAULT NULL ,
+  `model` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
+  `foreign_key` INT(10) UNSIGNED NULL DEFAULT NULL ,
+  `alias` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
+  `lft` INT(10) NULL DEFAULT NULL ,
+  `rght` INT(10) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_german1_ci;
+
+
+-- -----------------------------------------------------
+-- Table `toasti_db`.`acos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`acos` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `parent_id` INT(10) NULL DEFAULT NULL ,
+  `model` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
+  `foreign_key` INT(10) UNSIGNED NULL DEFAULT NULL ,
+  `alias` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
+  `lft` INT(10) NULL DEFAULT NULL ,
+  `rght` INT(10) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_german1_ci;
 
 
 
