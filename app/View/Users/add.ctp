@@ -1,27 +1,20 @@
+<ul class="nav nav-tabs">
+<li><?php echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); ?></li>
+<li class="active"><?php echo $this->Html->link('Neuer Nutzer', array('controller' => 'users', 'action' => 'add')); ?></li>
+<li><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Neue Gruppe', array('controller' => 'groups', 'action' => 'add')); ?></li>
+</ul>
+
 <div class="users form">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('name');
-		echo $this->Form->input('surname');
-		echo $this->Form->input('group_id');
+		echo $this->Form->input('username', array('label' => 'Nutzername'));
+		echo $this->Form->input('password', array('label' => 'Passwort'));
+		echo $this->Form->input('name', array('label' => 'Vorname'));
+		echo $this->Form->input('surname', array('label' => 'Nachname'));
+		echo $this->Form->input('group_id', array('label' => 'Gruppe'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Contacts'), array('controller' => 'contacts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Contact'), array('controller' => 'contacts', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Service Orders'), array('controller' => 'service_orders', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Service Order'), array('controller' => 'service_orders', 'action' => 'add')); ?> </li>
-	</ul>
+<?php echo $this->Form->end('Hinzufügen');?>
 </div>

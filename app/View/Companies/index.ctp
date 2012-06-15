@@ -21,7 +21,7 @@
         <td><?php echo $company['Company']['city']; ?></td>
         <td><?php echo $company['Company']['country']; ?></td>
         <td><?php if(!empty($company['Company']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
-        <td><?php echo $this->Html->link('Details','#', array('class' => 'btn')); ?>&nbsp;<?php echo $this->Html->link('Bearbeiten', array('action' => 'edit', $company['Company']['id']), array('class' => 'btn btn-info')); ?>&nbsp;<?php
+        <td><?php echo $this->Html->link('Anzeigen','#', array('class' => 'btn btn-info')); ?>&nbsp;<?php echo $this->Html->link('Bearbeiten', array('action' => 'edit', $company['Company']['id']), array('class' => 'btn')); ?>&nbsp;<?php
 echo $this->Form->postLink(
                 'Löschen',
                 array('action' => 'delete', $company['Company']['id']),

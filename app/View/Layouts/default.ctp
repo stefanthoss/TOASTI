@@ -20,6 +20,7 @@ echo $this->Html->script('bootstrap-collapse');
 echo $this->Html->script('bootstrap-dropdown');
 echo $this->Html->script('jquery-1.7.2.min.js');
 echo $this->Html->script('cakebootstrap.js');
+echo $this->Html->script('js_code.js');
 
 echo $this->Html->meta('author',Configure::read('System.author'));
 
