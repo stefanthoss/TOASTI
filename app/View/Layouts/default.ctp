@@ -63,6 +63,8 @@ echo $this->fetch('script');
 
     <div class="container">
 
+     <?php echo $this->Session->flash(); ?>
+
      <?php echo $this->fetch('content'); ?>
 
       <hr>
