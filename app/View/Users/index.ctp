@@ -1,22 +1,58 @@
-<?php $this->set('title_for_layout','Mitgliederdatenbank'); ?>
+<div class="users index">
+	<h2><?php echo __('Users');?></h2>
+	<table cellpadding="0" cellspacing="0">
+	<tr>
+			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('username');?></th>
+			<th><?php echo $this->Paginator->sort('password');?></th>
+			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('surname');?></th>
+			<th><?php echo $this->Paginator->sort('group_id');?></th>
+			<th class="actions"><?php echo __('Actions');?></th>
+	</tr>
+	<?php
+	foreach ($users as $user): ?>
+	<tr>
+		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['surname']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
+		</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
+		</td>
+	</tr>
+<?php endforeach; ?>
+	</table>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	));
+	?>	</p>
 
-<h1>Mitglieder</h1>
-<div class="alert">
-Dies ist (bisher) keine vollständige Mitgliederdatenbank, sondern nur eine Übersicht aller registrierten Nutzer.
+	<div class="paging">
+	<?php
+		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ''));
+		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+	?>
+	</div>
 </div>
-<table class="table table-striped">
-    <tr>
-        <th>Nutzername</th>
-        <th>Vorname</th>
-        <th>Nachname</th>
-    </tr>
-
-    <?php foreach ($users as $user): ?>
-    <tr>
-        <td><?php echo $user['User']['username']; ?></td>
-        <td><?php echo $user['User']['name']; ?></td>
-        <td><?php echo $user['User']['surname']; ?></td>
-    </tr>
-    <?php endforeach; ?>
-
-</table>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Contacts'), array('controller' => 'contacts', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Contact'), array('controller' => 'contacts', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Service Orders'), array('controller' => 'service_orders', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Service Order'), array('controller' => 'service_orders', 'action' => 'add')); ?> </li>
+	</ul>
+</div>
