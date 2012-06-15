@@ -1,5 +1,5 @@
 <?php
-App::uses('AppModel', 'Model', 'AuthComponent', 'Controller/Component');
+App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
     public $name = 'User';
     public $belongsTo = array('Group');
@@ -16,12 +16,6 @@ class User extends AppModel {
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Ein Passwort wird benötigt.'
-            )
-        ),
-        'surname' => array(
-            'required' => array(
-                'rule' => array('notEmpty'),
-                'message' => 'Ein Nachname wird benötigt.'
             )
         ),
         'role' => array(
@@ -48,10 +42,6 @@ class User extends AppModel {
             return array('Group' => array('id' => $groupId));
         }
     }
-
-public function bindNode($user) {
-    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
-}
 
     public function beforeSave() {
         $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);

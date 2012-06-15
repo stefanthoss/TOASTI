@@ -20,7 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Controller', 'Controller', 'Acl');
+App::uses('Controller', 'Controller');
 
 /**
  * Application Controller
@@ -41,7 +41,6 @@ class AppController extends Controller {
         ),
         'Session'
     );
-
     public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {
