@@ -4,6 +4,8 @@
 <li class="active"><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
 </ul>
 
+<p><?php echo $this->Html->link('Neue Gruppe hinzufügen', array('controller' => 'groups', 'action' => 'add'), array('class' => 'btn')); ?></p>
+
 <div class="groups index">
 	<table class="table table-striped">
 	<tr>
@@ -15,9 +17,8 @@
 	<tr>
 		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link('Anzeigen', array('action' => 'view', $group['Group']['id']), array('class' => 'btn btn-info')); ?>
-			<?php echo $this->Html->link('Bearbeiten', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn')); ?>
-			<?php echo $this->Form->postLink('Löschen', array('action' => 'delete', $group['Group']['id']), array('class' => 'btn btn-danger'), __('Bist du dir sicher, dass du die Gruppe %s löschen willst?', $group['Group']['name'])); ?>
+			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $group['Group']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
+			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -32,6 +33,4 @@
 		echo $this->Paginator->next('Nächste Seite', array('tag' => 'li'), '<a href="#">Nächste Seite</a>', array('tag' => 'li', 'class' => 'disabled', 'escape' => false));
 	?>
 	</ul></div>
-
-<p><?php echo $this->Html->link('Neue Gruppe hinzufügen', array('controller' => 'groups', 'action' => 'add'), array('class' => 'btn')); ?></p>
 </div>

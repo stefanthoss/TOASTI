@@ -9,3 +9,4 @@
 	</fieldset>
 <?php echo $this->Form->end('Änderungen speichern');?>
 </div>
+<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Gruppe löschen', array('action' => 'delete', $group['Group']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Gruppe '.$group['Group']['name'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>

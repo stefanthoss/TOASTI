@@ -37,6 +37,7 @@ class UsersController extends AppController {
 
 	public function edit($id = null) {
 		$this->User->id = $id;
+      		$this->set('user', $this->User->read(null, $id));
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}

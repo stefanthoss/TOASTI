@@ -9,7 +9,6 @@ class GroupsController extends AppController {
 
 public function beforeFilter() {
     parent::beforeFilter();
-    $this->Auth->allow('*');
 }
 
 /**
@@ -61,6 +60,7 @@ public function beforeFilter() {
  */
 	public function edit($id = null) {
 		$this->Group->id = $id;
+      		$this->set('group', $this->Group->read(null, $id));
 		if (!$this->Group->exists()) {
 			throw new NotFoundException(__('Invalid group'));
 		}
