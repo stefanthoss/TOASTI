@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout','Nutzeransicht'); ?>
 <div class="users view row">
 <h2>Nutzerinfos</h2>
 

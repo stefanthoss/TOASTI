@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout','Gruppe bearbeiten'); ?>
 <div class="groups form">
 <?php echo $this->Form->create('Group');?>
 	<fieldset>

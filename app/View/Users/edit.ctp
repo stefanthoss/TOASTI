@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout','Nutzer bearbeiten'); ?>
 <div class="users form">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

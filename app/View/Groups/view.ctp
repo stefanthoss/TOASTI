@@ -1,3 +1,4 @@
+<?php $this->set('title_for_layout','Grupenansicht'); ?>
 <div class="row">
 <div class="groups view">
 <h2>Nutzerinfos</h2>

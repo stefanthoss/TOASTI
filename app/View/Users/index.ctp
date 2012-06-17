@@ -1,8 +1,7 @@
+<?php $this->set('title_for_layout','Nutzerliste'); ?>
 <ul class="nav nav-tabs">
 <li class="active"><?php echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Neuer Nutzer', array('controller' => 'users', 'action' => 'add')); ?></li>
 <li><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Neue Gruppe', array('controller' => 'groups', 'action' => 'add')); ?></li>
 </ul>
 
 <div class="users index">
@@ -41,4 +40,6 @@
 		echo $this->Paginator->next('Nächste Seite', array('tag' => 'li'), '<a href="#">Nächste Seite</a>', array('tag' => 'li', 'class' => 'disabled', 'escape' => false));
 	?>
 	</ul></div>
+
+<p><?php echo $this->Html->link('Neuen Nutzer hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); ?></p>
 </div>
