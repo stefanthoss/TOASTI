@@ -4,7 +4,8 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
- 	$this->Auth->allow('*');
+ 	//$this->Auth->allow('*');
+ 	$this->Auth->allow('login', 'logout');
     }
 
     public function index() {
@@ -81,6 +82,41 @@ public function login() {
 
 public function logout() {
     $this->redirect($this->Auth->logout());
+}
+
+/**
+ * initialize ACL table
+ * @see http://book.cakephp.org/2.0/en/tutorials-and-examples/simple-acl-controlled-application/part-two.html
+ */
+public function initDB() {
+    /* define group rights */
+    echo "define group rights...<br />";
+    $group = $this->User->Group;
+
+    /* allow 'admin' to do everything */
+    echo "allow admin<br />";
+    $group->id = 1;
+    $this->Acl->allow($group, 'controllers');
+
+    /* allow 'board' to do everything in companies */
+    echo "allow board<br />";
+    $group->id = 3;
+    $this->Acl->deny($group, 'controllers');
+    $this->Acl->allow($group, 'controllers/Companies');
+    $this->Acl->allow($group, 'controllers/Users');
+    $this->Acl->deny($group, 'controllers/Users/delete');
+
+    /* allow 'member' to do just certain things */
+    echo "allow member<br />";
+    $group->id = 2;
+    $this->Acl->deny($group, 'controllers');
+    $this->Acl->allow($group, 'controllers/Companies/index');
+    //$this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Users/index');
+
+    /* done message */
+    echo "all done";
+    exit;
 }
 }
 ?>

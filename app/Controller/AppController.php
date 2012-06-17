@@ -51,7 +51,6 @@ class AppController extends Controller {
         /* configure authentification */
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'home');
-        $this->Auth->loginRedirect = array('controller' => 'pages', 'action' => 'home');
         $this->Auth->authError = "Bitte logge dich ein.";
     }
 }
