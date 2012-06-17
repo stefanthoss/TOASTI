@@ -15,11 +15,12 @@ Configure::write('System.author','KMC des VWI ESTIEM Darmstadt');
 
 echo $this->Html->css('bootstrap.min');
 echo $this->Html->css('bootstrap-responsive.min');
+echo $this->Html->script('jquery-1.7.2.min');
 echo $this->Html->script('bootstrap.min');
 echo $this->Html->script('bootstrap-collapse');
 echo $this->Html->script('bootstrap-dropdown');
-echo $this->Html->script('jquery-1.7.2.min.js');
-echo $this->Html->script('cakebootstrap.js');
+echo $this->Html->script('cakebootstrap');
+echo $this->Html->script('js_code');
 
 echo $this->Html->meta('author',Configure::read('System.author'));
 
@@ -43,7 +44,7 @@ echo $this->fetch('script');
             <ul class="nav">
               <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
-              <li><?php echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Nutzerverwaltung', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>
             <ul class="nav pull-right">
               <?php if(!empty($username)) { ?>

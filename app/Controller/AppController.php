@@ -20,7 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Controller', 'Controller', 'CakeEmail', 'Network/Email');
+App::uses('Controller', 'Controller', 'Acl');
 
 /**
  * Application Controller
@@ -33,19 +33,25 @@ App::uses('Controller', 'Controller', 'CakeEmail', 'Network/Email');
  */
 class AppController extends Controller {
     public $components = array(
-        'Session',
+        'Acl',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'pages', 'action' => 'home'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'home')
-        )
+            'authorize' => array(
+                'Actions' => array('actionPath' => 'controllers')
+            )
+        ),
+        'Session'
     );
+
+    public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {
         $this->set('username', $this->Auth->user('username'));
         $this->set('fullname', $this->Auth->user('name').' '.$this->Auth->user('surname'));
-        $this->set('role', $this->Auth->user('role'));
 
-        /* custom authentification error message */
+        /* configure authentification */
+        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
+        $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'home');
         $this->Auth->authError = "Bitte logge dich ein.";
     }
-}?>
+}
+?>

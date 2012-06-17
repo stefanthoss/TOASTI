@@ -19,6 +19,8 @@ Noch nicht verfügbar.
         <div class="span4">
           <h2>Mitgliederdatenbank</h2>
            <p>Informationen über alle (hier registrierten) Mitglieder.</p>
-          <p><?php echo $this->Html->link('Mehr', array('controller' => 'users', 'action' => 'index'), array('class' => 'btn')); ?></p>
+<div class="alert">
+Noch nicht verfügbar.
+</div>
        </div>
       </div>
