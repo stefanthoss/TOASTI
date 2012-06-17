@@ -7,7 +7,16 @@ class CompaniesController extends AppController {
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $this->set('companies', $this->Company->find('all'));
+        $this->Company->recursive = 0;
+        $this->set('companies', $this->paginate());
+    }
+
+    public function view($id = null) {
+        $this->Company->id = $id;
+        if (!$this->Company->exists()) {
+            throw new NotFoundException('Ungültiges Unternehmen');
+        }
+        $this->set('company', $this->Company->read(null, $id));
     }
 
 public function add() {
@@ -26,13 +35,14 @@ public function delete($id) {
         throw new MethodNotAllowedException();
     }
     if ($this->Company->delete($id)) {
-        $this->Session->setFlash('Das Unternehmen (ID ' . $id . ') wurde gelöscht.');
+        $this->Session->setFlash('Das Unternehmen wurde gelöscht.');
         $this->redirect(array('action' => 'index'));
     }
 }
 
 public function edit($id = null) {
     $this->Company->id = $id;
+    $this->set('company', $this->Company->read(null, $id));
     if ($this->request->is('get')) {
         $this->request->data = $this->Company->read();
     } else {

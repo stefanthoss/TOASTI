@@ -15,3 +15,4 @@
     </fieldset>
 <?php echo $this->Form->end('Speichern');?>
 </div>
+<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Unternehmen löschen', array('action' => 'delete', $company['Company']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du das Unternehmen '.$company['Company']['name'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>

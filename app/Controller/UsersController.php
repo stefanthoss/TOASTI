@@ -4,7 +4,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
- 	//$this->Auth->allow('*');
+ 	// $this->Auth->allow('*');
  	$this->Auth->allow('login', 'logout');
     }
 
@@ -112,7 +112,7 @@ public function initDB() {
     $group->id = 2;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies/index');
-    //$this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Companies/view');
     $this->Acl->allow($group, 'controllers/Users/index');
 
     /* done message */
