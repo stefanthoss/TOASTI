@@ -22,10 +22,10 @@ class CompaniesController extends AppController {
 public function add() {
         if ($this->request->is('post')) {
             if ($this->Company->save($this->request->data)) {
-                $this->Session->setFlash('Das Unternehmen wurde gespeichert.');
+                $this->Session->setFlash('Das Unternehmen wurde hinzugefügt.');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash('Das Unternehmen konnte nicht gespeichert werden.');
+                $this->Session->setFlash('Das Unternehmen konnte nicht hinzugefügt werden.');
             }
         }
     }
@@ -47,10 +47,10 @@ public function edit($id = null) {
         $this->request->data = $this->Company->read();
     } else {
         if ($this->Company->save($this->request->data)) {
-            $this->Session->setFlash('Die Unternehmensdaten wurden gespeichert.');
+            $this->Session->setFlash('Das Unternehmen wurde gespeichert.');
             $this->redirect(array('action' => 'index'));
         } else {
-            $this->Session->setFlash('Die Unternehmensdaten konnten nicht gespeichert werden.');
+            $this->Session->setFlash('Das Unternehmen konnte nicht gespeichert werden.');
         }
     }
 }

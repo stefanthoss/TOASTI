@@ -25,10 +25,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash('Der Nutzer wurde hinzugefügt.');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash('Der Nutzer konnte nicht hinzugefügt werden.');
 			}
 		}
 		$groups = $this->User->Group->find('list');
@@ -39,14 +39,14 @@ class UsersController extends AppController {
 		$this->User->id = $id;
       		$this->set('user', $this->User->read(null, $id));
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+          		  throw new NotFoundException('Ungültiger Nutzer');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash('Der Nutzer wurde gespeichert.');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash('Der Nutzer konnte nicht gespeichert werden.');
 			}
 		} else {
 			$this->request->data = $this->User->read(null, $id);
@@ -61,13 +61,13 @@ class UsersController extends AppController {
 		}
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+          		  throw new NotFoundException('Ungültiger Nutzer');
 		}
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
+			$this->Session->setFlash('Der Nutzer wurde gelöscht.');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('User was not deleted'));
+		$this->Session->setFlash('Der Nutzer wurde nicht gelöscht.');
 		$this->redirect(array('action' => 'index'));
 	}
 
