@@ -24,11 +24,12 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`contact_persons`
+-- Table `toasti_db`.`contact_people`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_persons` (
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_people` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(45) NULL ,
+  `surname` VARCHAR(45) NOT NULL ,
   `position` VARCHAR(45) NULL ,
   `department` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
@@ -41,7 +42,7 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_persons` (
   `city` VARCHAR(45) NULL ,
   `country` VARCHAR(45) NULL ,
   `note` TEXT NULL ,
-  `company_id` VARCHAR(45) NOT NULL ,
+  `company_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_contact_person_company` (`company_id` ASC) )
 ENGINE = MyISAM
