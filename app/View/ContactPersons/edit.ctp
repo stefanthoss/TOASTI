@@ -23,4 +23,4 @@
 	</fieldset>
 <?php echo $this->Form->end('Änderungen speichern');?>
 </div>
-<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktperson löschen', array('action' => 'delete', $contact_person['ContactPerson']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktperson '.$contact_person['ContactPerson']['surname'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>
+<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktperson löschen', array('action' => 'delete', $contact_person['ContactPerson']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktperson '.$contact_person['ContactPerson']['name'].' '.$contact_person['ContactPerson']['surname'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>

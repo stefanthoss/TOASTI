@@ -15,21 +15,6 @@ public $validate = array(
         'allowEmpty' => true,
         'message' => 'Keine gültige E-Mail-Adresse eingegeben.'
     ),
-    'phone' => array(
-        'rule' => array('phone', null, null),
-        'allowEmpty' => true,
-        'message' => 'Keine gültige Telefonnummer eingegeben.'
-    ),
-    'mobile' => array(
-        'rule' => array('phone', null, null),
-        'allowEmpty' => true,
-        'message' => 'Keine gültige Handynummer eingegeben.'
-    ),
-    'fax' => array(
-        'rule' => array('phone', null, null),
-        'allowEmpty' => true,
-        'message' => 'Keine gültige Faxnummer eingegeben.'
-    ),
     'zip' => array(
         'rule' => array('postal', null, 'de'),
 	'allowEmpty' => true,
