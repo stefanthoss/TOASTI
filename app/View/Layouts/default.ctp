@@ -44,6 +44,7 @@ echo $this->fetch('script');
             <ul class="nav">
               <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Dienstleister','#'); ?></li>
+              <li><?php echo $this->Html->link('Veranstaltungen', array('controller' => 'events', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Nutzerverwaltung', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>
             <ul class="nav pull-right">
