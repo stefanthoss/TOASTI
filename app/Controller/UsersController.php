@@ -106,6 +106,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Companies');
     $this->Acl->allow($group, 'controllers/Users');
     $this->Acl->deny($group, 'controllers/Users/delete');
+    $this->Acl->allow($group, 'controllers/Events');
 
     /* allow 'member' to do just certain things */
     echo "allow member<br />";
