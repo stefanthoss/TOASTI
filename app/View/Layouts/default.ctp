@@ -47,8 +47,8 @@ echo $this->fetch('script');
               <li><?php echo $this->Html->link('Nutzerverwaltung', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>
             <ul class="nav pull-right">
-              <?php if(!empty($username)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $fullname; ?></li>
+              <?php if(isset($user)) { ?>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $user['User']['name'].' '.$user['User']['surname'].' ('.$user['Group']['name'].')'; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
               <?php } else { ?>
