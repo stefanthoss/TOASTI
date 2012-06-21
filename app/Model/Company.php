@@ -15,11 +15,11 @@ public $validate = array(
     )
 );
 
-	public $hasMany = array(
-		'ContactPerson' => array(
-			'className' => 'ContactPerson',
-			'foreignKey' => 'company_id',
-			'dependent' => false
-		)
-	);
+public $hasMany = array(
+	'ContactPerson' => array(
+		'className' => 'ContactPerson',
+		'foreignKey' => 'company_id',
+		'dependent' => false
+	)
+);
 }

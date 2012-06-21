@@ -33,6 +33,14 @@ class User extends AppModel {
         )
     );
 
+public $hasMany = array(
+	'Contact' => array(
+		'className' => 'Contact',
+		'foreignKey' => 'user_id',
+		'dependent' => false
+	)
+);
+
     public function parentNode() {
         if (!$this->id && empty($this->data)) {
             return null;
