@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout','Unternehmensbranche hinzufügen'); ?>
-<div class="company_sectors form">
-<?php echo $this->Form->create('CompanySector');?>
+<div class="sectors form">
+<?php echo $this->Form->create('Sector');?>
     <fieldset>
         <legend>Unternehmensbranche hinzufügen</legend>
     <?php

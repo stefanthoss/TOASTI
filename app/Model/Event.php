@@ -11,8 +11,8 @@ public $validate = array(
 );
 
 public $hasMany = array(
-	'Contact' => array(
-		'className' => 'Contact',
+	'cooperation' => array(
+		'className' => 'Cooperation',
 		'foreignKey' => 'event_id',
 		'dependent' => false
 	)

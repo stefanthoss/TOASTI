@@ -16,16 +16,16 @@ public $validate = array(
 );
 
 public $hasMany = array(
-	'ContactPerson' => array(
-		'className' => 'ContactPerson',
+	'Contact' => array(
+		'className' => 'Contact',
 		'foreignKey' => 'company_id',
 		'dependent' => false
 	)
 );
 
 var $belongsTo = array(
-    'CompanySector' => array(
-        'className'    => 'CompanySector',
-        'foreignKey'    => 'company_sector_id'
+    'Sector' => array(
+        'className'    => 'Sector',
+        'foreignKey'    => 'sector_id'
 ));
 }

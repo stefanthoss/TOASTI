@@ -1,6 +1,6 @@
 <?php
-class CompanySector extends AppModel {
-public $name = 'CompanySector';
+class Sector extends AppModel {
+public $name = 'Sector';
 public $validate = array(
     'name' => array(
             'required' => array(
@@ -13,7 +13,7 @@ public $validate = array(
 public $hasMany = array(
 	'Company' => array(
 		'className' => 'Company',
-		'foreignKey' => 'company_sector_id',
+		'foreignKey' => 'sector_id',
 		'dependent' => false
 	)
 );

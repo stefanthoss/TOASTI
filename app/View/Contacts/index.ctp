@@ -1,34 +1,35 @@
-<?php $this->set('title_for_layout', 'Kontaktaufnahmen'); ?>
+<?php $this->set('title_for_layout','Kontaktpersonen'); ?>
 
 <ul class="nav nav-tabs">
 <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contact_persons', 'action' => 'index')); ?></li>
-<li class="active"><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'company_sectors', 'action' => 'index')); ?></li>
+<li class="active"><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); ?></li>
 </ul>
 
-<p><?php echo $this->Html->link('Neue Kontaktaufnahme hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
+<p><?php echo $this->Html->link('Neue Kontaktperson hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
 
 <div class="contacts index">
 	<table class="table table-striped">
 	<tr>
+			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
+			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
 			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
-			<th><?php echo $this->Paginator->sort('event', 'Veranstaltung');?></th>
-			<th><?php echo $this->Paginator->sort('user', 'VWI-Mitglied');?></th>
-			<th><?php echo $this->Paginator->sort('date', 'Datum');?></th>
-			<th><?php echo $this->Paginator->sort('cooperation_kind', 'Telefonnummer');?></th>
+			<th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
+			<th><?php echo $this->Paginator->sort('city', 'Stadt');?></th>
+			<th><?php echo $this->Paginator->sort('country', 'Land');?></th>
 			<th>Notiz</th>
 			<th class="actions">Aktionen</th>
 	</tr>
-	<?php
-	foreach ($contacts as $contact): ?>
+	<?php foreach ($contacts as $contact): ?>
 	<tr>
-		<td><?php echo $this->Html->link($contact['ContactPerson']['name'], array('controller' => 'contact_persons', 'action' => 'view', $contact['ContactPerson']['id'])); ?></td>
-		<td><?php echo $this->Html->link($contact['Event']['name'], array('controller' => 'events', 'action' => 'view', $contact['Event']['id'])); ?></td>
-		<td><?php echo $this->Html->link($contact['User']['name'], array('controller' => 'users', 'action' => 'view', $contact['User']['id'])); ?></td>
-		<td><?php echo $contact['Contact']['date']; ?></td>
-		<td><?php echo $contact['Contact']['cooperation_kind']; ?></td>
-                <td><?php if(!empty($contact['Contact']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
+		<td><?php echo $contact['Contact']['gender']; ?> <?php echo $contact['Contact']['title']; ?> <?php echo $contact['Contact']['first_name']; ?></td>
+		<td><?php echo $contact['Contact']['name']; ?></td>
+		<td><?php echo $this->Html->link($contact['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact['Company']['id'])); ?></td>
+		<td><?php echo $this->Html->link($contact['Contact']['email'], 'mailto:'.$contact['Contact']['email'], array('target' => '_blank')); ?></td>
+		<td><?php echo $contact['Contact']['city']; ?></td>
+		<td><?php echo $contact['Contact']['country']; ?></td>
+        <td><?php if(!empty($contact['Contact']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 		<td class="actions">
 			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $contact['Contact']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
 			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $contact['Contact']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>

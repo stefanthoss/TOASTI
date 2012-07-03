@@ -14,7 +14,7 @@ class ContactsController extends AppController {
     public function view($id = null) {
         $this->Contact->id = $id;
         if (!$this->Contact->exists()) {
-            throw new NotFoundException('Ungültige Kontaktaufnahme');
+            throw new NotFoundException('Ungültige Kontaktperson');
         }
         $this->set('contact', $this->Contact->read(null, $id));
     }
@@ -23,18 +23,14 @@ class ContactsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash('Die Kontaktaufnahme wurde hinzugefügt.');
+				$this->Session->setFlash('Die Kontaktperson wurde hinzugefügt.');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht hinzugefügt werden.');
+				$this->Session->setFlash('Die Kontaktperson konnte nicht hinzugefügt werden.');
 			}
 		}
-		$contact_persons = $this->Contact->ContactPerson->find('list');
-		$this->set(compact('contact_persons'));
-		$users = $this->Contact->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Contact->Event->find('list');
-		$this->set(compact('events'));
+		$companies = $this->Contact->Company->find('list');
+		$this->set(compact('companies'));
 	}
 
 public function delete($id = null) {
@@ -43,13 +39,13 @@ public function delete($id = null) {
 	}
 	$this->Contact->id = $id;
 	if (!$this->Contact->exists()) {
-            throw new NotFoundException('Ungültige Kontaktaufnahme');
+            throw new NotFoundException('Ungültige Kontaktperson');
 	}
 	if ($this->Contact->delete()) {
-		$this->Session->setFlash('Die Kontaktaufnahme wurde gelöscht.');
+		$this->Session->setFlash('Die Kontaktperson wurde gelöscht.');
 		$this->redirect(array('action' => 'index'));
 	}
-	$this->Session->setFlash('Die Kontaktaufnahme wurde nicht gelöscht.');
+	$this->Session->setFlash('Die Kontaktperson wurde nicht gelöscht.');
 	$this->redirect(array('action' => 'index'));
 }
 
@@ -57,23 +53,19 @@ public function delete($id = null) {
     $this->Contact->id = $id;
     $this->set('contact', $this->Contact->read(null, $id));
 		if (!$this->Contact->exists()) {
-            throw new NotFoundException('Ungültige Kontaktaufnahme');
+            throw new NotFoundException('Ungültige Kontaktperson');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash('Die Kontaktaufnahme wurde gespeichert.');
+				$this->Session->setFlash('Die Kontaktperson wurde gespeichert.');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht gespeichert werden.');
+				$this->Session->setFlash('Die Kontaktperson konnte nicht gespeichert werden.');
 			}
 		} else {
 			$this->request->data = $this->Contact->read(null, $id);
 		}
-		$contact_persons = $this->Contact->ContactPerson->find('list');
-		$this->set(compact('contact_persons'));
-		$users = $this->Contact->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Contact->Event->find('list');
-		$this->set(compact('events'));
+		$companies = $this->Contact->Company->find('list');
+		$this->set(compact('companies'));
 	}
 }

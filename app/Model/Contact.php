@@ -1,27 +1,36 @@
 <?php
-App::uses('AppModel', 'Model');
+App::uses('AppModel', 'Model', 'Controller/Component');
 class Contact extends AppModel {
 public $name = 'Contact';
-         
-var $belongsTo = array(
-    'ContactPerson' => array(
-        'className'    => 'ContactPerson',
-        'foreignKey'    => 'contact_person_id'
-    ),
-    'User' => array(
-        'className'    => 'User',
-        'foreignKey'    => 'user_id'
-    ),
-    'Event' => array(
-        'className'    => 'Event',
-        'foreignKey'    => 'event_id'
-    ),
-);
-
 public $validate = array(
-    'date' => array(
-        'rule' => array('date'),
-        'message' => 'Kein (gültiges) Datum eingegeben eingegeben.'
+     'name' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Ein Nachname wird benötigt.'
+            )
+        ),
+    'email' => array(
+        'rule' => array('email'),
+        'allowEmpty' => true,
+        'message' => 'Keine gültige E-Mail-Adresse eingegeben.'
+    ),
+    'zip' => array(
+        'rule' => array('postal', null, 'de'),
+	'allowEmpty' => true,
+	'message' => 'Keine gültige PLZ eingegeben.'
     )
 );
+
+public $hasMany = array(
+	'Cooperation' => array(
+		'className' => 'Cooperation',
+		'foreignKey' => 'contact_id',
+		'dependent' => false
+));
+
+var $belongsTo = array(
+    'Company' => array(
+        'className'    => 'Company',
+        'foreignKey'    => 'company_id'
+));
 }
