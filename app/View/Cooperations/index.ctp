@@ -12,7 +12,7 @@
 <div class="cooperations index">
 	<table class="table table-striped">
 	<tr>
-			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
+			<th><?php echo $this->Paginator->sort('contact', 'Kontaktperson');?></th>
 			<th><?php echo $this->Paginator->sort('event', 'Veranstaltung');?></th>
 			<th><?php echo $this->Paginator->sort('user', 'VWI-Mitglied');?></th>
 			<th><?php echo $this->Paginator->sort('date', 'Datum');?></th>
@@ -23,9 +23,9 @@
 	<?php
 	foreach ($cooperations as $cooperation): ?>
 	<tr>
-		<td><?php echo $this->Html->link($cooperation['ContactPerson']['name'], array('controller' => 'contact_persons', 'action' => 'view', $cooperation['ContactPerson']['id'])); ?></td>
+		<td><?php echo $this->Html->link($cooperation['Contact']['first_name'].' '.$cooperation['Contact']['name'], array('controller' => 'contacts', 'action' => 'view', $cooperation['Contact']['id'])); ?></td>
 		<td><?php echo $this->Html->link($cooperation['Event']['name'], array('controller' => 'events', 'action' => 'view', $cooperation['Event']['id'])); ?></td>
-		<td><?php echo $this->Html->link($cooperation['User']['name'], array('controller' => 'users', 'action' => 'view', $cooperation['User']['id'])); ?></td>
+		<td><?php echo $this->Html->link($cooperation['User']['first_name'].' '.$cooperation['User']['name'], array('controller' => 'users', 'action' => 'view', $cooperation['User']['id'])); ?></td>
 		<td><?php echo $cooperation['Cooperation']['date']; ?></td>
 		<td><?php echo $cooperation['Cooperation']['cooperation_kind']; ?></td>
                 <td><?php if(!empty($cooperation['Cooperation']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>

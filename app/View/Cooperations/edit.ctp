@@ -4,7 +4,7 @@
 	<fieldset>
 		<legend>Kontaktaufnahme bearbeiten</legend>
 	<?php
-		echo $this->Form->input('contact_person_id', array('label' => 'Kontaktperson'));
+		echo $this->Form->input('contact_id', array('label' => 'Kontaktperson'));
 		echo $this->Form->input('event_id', array('label' => 'Veranstaltung'));
 		echo $this->Form->input('user_id', array('label' => 'VWI-Mitglied'));
 		echo $this->Form->input('date', array('label' => 'Datum'));

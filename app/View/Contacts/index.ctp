@@ -12,6 +12,8 @@
 <div class="contacts index">
 	<table class="table table-striped">
 	<tr>
+			<th></th>
+			<th></th>
 			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
 			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
 			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
@@ -23,7 +25,9 @@
 	</tr>
 	<?php foreach ($contacts as $contact): ?>
 	<tr>
-		<td><?php echo $contact['Contact']['gender']; ?> <?php echo $contact['Contact']['title']; ?> <?php echo $contact['Contact']['first_name']; ?></td>
+		<td><?php echo $contact['Contact']['gender']; ?></td>
+		<td><?php echo $contact['Contact']['title']; ?></td>
+		<td><?php echo $contact['Contact']['first_name']; ?></td>
 		<td><?php echo $contact['Contact']['name']; ?></td>
 		<td><?php echo $this->Html->link($contact['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact['Company']['id'])); ?></td>
 		<td><?php echo $this->Html->link($contact['Contact']['email'], 'mailto:'.$contact['Contact']['email'], array('target' => '_blank')); ?></td>
