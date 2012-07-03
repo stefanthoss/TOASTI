@@ -43,8 +43,6 @@ echo $this->fetch('script');
           <div class="nav-collapse">
             <ul class="nav">
               <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
-              <li><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contact_persons', 'action' => 'index')); ?></li>
-              <li><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Veranstaltungen', array('controller' => 'events', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Nutzerverwaltung', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>

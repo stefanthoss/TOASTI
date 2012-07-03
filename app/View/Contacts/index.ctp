@@ -1,6 +1,10 @@
 <?php $this->set('title_for_layout', 'Kontaktaufnahmen'); ?>
 
-<h1>Kontaktaufnahmen</h1>
+<ul class="nav nav-tabs">
+<li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contact_persons', 'action' => 'index')); ?></li>
+<li class="active"><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
+</ul>
 
 <p><?php echo $this->Html->link('Neue Kontaktaufnahme hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
 
