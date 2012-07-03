@@ -2,7 +2,6 @@
 App::uses('AppModel', 'Model', 'Controller/Component');
 class ContactPerson extends AppModel {
 public $name = 'ContactPerson';
-public $belongsTo = array('Company');
 public $validate = array(
      'name' => array(
             'required' => array(
@@ -27,6 +26,11 @@ public $hasMany = array(
 		'className' => 'Contact',
 		'foreignKey' => 'contact_person_id',
 		'dependent' => false
-	)
-);
+));
+
+var $belongsTo = array(
+    'Company' => array(
+        'className'    => 'Company',
+        'foreignKey'    => 'company_id'
+));
 }

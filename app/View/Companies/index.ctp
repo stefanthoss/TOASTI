@@ -4,6 +4,7 @@
 <li class="active"><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
 <li><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contact_persons', 'action' => 'index')); ?></li>
 <li><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'company_sectors', 'action' => 'index')); ?></li>
 </ul>
 
 <p><?php echo $this->Html->link('Neues Unternehmen hinzufügen', array('controller' => 'companies', 'action' => 'add'), array('class' => 'btn')); ?></p>
@@ -12,10 +13,9 @@
 <table class="table table-striped">
     <tr>
         <th><?php echo $this->Paginator->sort('name', 'Name');?></th>
-        <th><?php echo $this->Paginator->sort('street', 'Straße');?></th>
-        <th><?php echo $this->Paginator->sort('zip', 'PLZ');?></th>
         <th><?php echo $this->Paginator->sort('city', 'Stadt');?></th>
         <th><?php echo $this->Paginator->sort('country', 'Land');?></th>
+        <th><?php echo $this->Paginator->sort('company_sector', 'Branche');?></th>
         <th>Notiz</th>
         <th class="actions">Aktionen</th>
     </tr>
@@ -23,10 +23,9 @@
     <?php foreach ($companies as $company): ?>
     <tr>
         <td><?php echo $company['Company']['name']; ?></td>
-        <td><?php echo $company['Company']['street']; ?><br /><?php echo $company['Company']['street2']; ?></td>
-        <td><?php echo $company['Company']['zip']; ?></td>
         <td><?php echo $company['Company']['city']; ?></td>
         <td><?php echo $company['Company']['country']; ?></td>
+        <td><?php echo $company['Company']['company_sector_id']; ?></td>
         <td><?php if(!empty($company['Company']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 	<td class="actions">
 		<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $company['Company']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>

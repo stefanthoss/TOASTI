@@ -7,7 +7,7 @@
 	<tr><td>Unternehmen:</td><td><?php echo $this->Html->link($contact_person['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact_person['Company']['id'])); ?></td></tr>
 	<tr><td>Position:</td><td><?php echo $contact_person['ContactPerson']['position']; ?></td></tr>
 	<tr><td>Abteilung:</td><td><?php echo $contact_person['ContactPerson']['department']; ?></td></tr>
-	<tr><td>E-Mail:</td><td><?php echo $this->Html->link($contact_person['ContactPerson']['email'], 'mailto:'.$contact_person['ContactPerson']['email']); ?></td></tr>
+	<tr><td>E-Mail:</td><td><?php echo $this->Html->link($contact_person['ContactPerson']['email'], 'mailto:'.$contact_person['ContactPerson']['email'], array('target' => '_blank')); ?></td></tr>
 	<tr><td>Telefonnummer:</td><td><?php echo $contact_person['ContactPerson']['phone']; ?></td></tr>
 	<tr><td>Handynummer:</td><td><?php echo $contact_person['ContactPerson']['mobile']; ?></td></tr>
 	<tr><td>Faxnummer:</td><td><?php echo $contact_person['ContactPerson']['fax']; ?></td></tr>

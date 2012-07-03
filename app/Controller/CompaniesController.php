@@ -28,6 +28,8 @@ public function add() {
                 $this->Session->setFlash('Das Unternehmen konnte nicht gespeichert werden.');
             }
         }
+	$company_sectors = $this->Company->CompanySector->find('list');
+	$this->set(compact('company_sectors'));
     }
 
 public function delete($id) {
@@ -53,5 +55,7 @@ public function edit($id = null) {
             $this->Session->setFlash('Die Unternehmensdaten konnten nicht gespeichert werden.');
         }
     }
+	$company_sectors = $this->Company->CompanySector->find('list');
+	$this->set(compact('company_sectors'));
 }
 }

@@ -22,4 +22,10 @@ public $hasMany = array(
 		'dependent' => false
 	)
 );
+
+var $belongsTo = array(
+    'CompanySector' => array(
+        'className'    => 'CompanySector',
+        'foreignKey'    => 'company_sector_id'
+));
 }

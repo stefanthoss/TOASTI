@@ -4,6 +4,7 @@
 <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
 <li class="active"><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contact_persons', 'action' => 'index')); ?></li>
 <li><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
+<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'company_sectors', 'action' => 'index')); ?></li>
 </ul>
 
 <p><?php echo $this->Html->link('Neue Kontaktperson hinzufügen', array('controller' => 'contact_persons', 'action' => 'add'), array('class' => 'btn')); ?></p>
@@ -11,27 +12,23 @@
 <div class="contact_persons index">
 	<table class="table table-striped">
 	<tr>
-			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
 			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
 			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
+			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
 			<th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
-			<th><?php echo $this->Paginator->sort('phone', 'Telefonnummer');?></th>
-			<th><?php echo $this->Paginator->sort('mobile', 'Handynummer');?></th>
 			<th><?php echo $this->Paginator->sort('city', 'Stadt');?></th>
+			<th><?php echo $this->Paginator->sort('country', 'Land');?></th>
 			<th>Notiz</th>
 			<th class="actions">Aktionen</th>
 	</tr>
 	<?php foreach ($contact_persons as $contact_person): ?>
 	<tr>
-		<td>
-			<?php echo $this->Html->link($contact_person['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact_person['Company']['id'])); ?>
-		</td>
 		<td><?php echo $contact_person['ContactPerson']['gender']; ?> <?php echo $contact_person['ContactPerson']['title']; ?> <?php echo $contact_person['ContactPerson']['first_name']; ?></td>
 		<td><?php echo $contact_person['ContactPerson']['name']; ?></td>
-		<td><?php echo $this->Html->link($contact_person['ContactPerson']['email'], 'mailto:'.$contact_person['ContactPerson']['email']); ?></td>
-		<td><?php echo $contact_person['ContactPerson']['phone']; ?></td>
-		<td><?php echo $contact_person['ContactPerson']['mobile']; ?></td>
+		<td><?php echo $this->Html->link($contact_person['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact_person['Company']['id'])); ?></td>
+		<td><?php echo $this->Html->link($contact_person['ContactPerson']['email'], 'mailto:'.$contact_person['ContactPerson']['email'], array('target' => '_blank')); ?></td>
 		<td><?php echo $contact_person['ContactPerson']['city']; ?></td>
+		<td><?php echo $contact_person['ContactPerson']['country']; ?></td>
         <td><?php if(!empty($contact_person['ContactPerson']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 		<td class="actions">
 			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $contact_person['ContactPerson']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>

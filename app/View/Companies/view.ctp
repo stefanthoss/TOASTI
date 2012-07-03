@@ -4,6 +4,7 @@
 <div class="companies view row">
 <table class="table table-condensed span6">
 	<tr><td>ID:</td><td><?php echo $company['Company']['id']; ?></td></tr>
+	<tr><td>Branche:</td><td><?php echo $company['CompanySector']['name']; ?></td></tr>
 	<tr><td>Straße:</td><td><?php echo $company['Company']['street']; ?><br /><?php echo $company['Company']['street2']; ?></td></tr>
 	<tr><td>Stadt:</td><td><?php echo $company['Company']['zip']; ?> <?php echo $company['Company']['city']; ?></td></tr>
 	<tr><td>Land:</td><td><?php echo $company['Company']['country']; ?></td></tr>
@@ -19,7 +20,7 @@
 
 	<ul>
 	<?php foreach ($company['ContactPerson'] as $contact_person): ?>
-	<li><?php echo $this->Html->link($contact_person['name'].' '.$contact_person['surname'], array('controller' => 'contact_persons', 'action' => 'view', $contact_person['id'])); ?></li>
+	<li><?php echo $this->Html->link($contact_person['first_name'].' '.$contact_person['name'], array('controller' => 'contact_persons', 'action' => 'view', $contact_person['id'])); ?></li>
 	<?php endforeach; ?>
 	</ul>
 </div>
