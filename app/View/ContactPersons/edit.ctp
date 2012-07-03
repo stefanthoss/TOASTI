@@ -5,8 +5,10 @@
 		<legend>Kontaktperson bearbeiten</legend>
 	<?php
 		echo $this->Form->input('company_id', array('label' => 'Unternehmen'));
-		echo $this->Form->input('name', array('label' => 'Vorname'));
-		echo $this->Form->input('surname', array('label' => 'Nachname'));
+		echo $this->Form->input('gender', array('label' => 'Anrede', 'options' => array('' => '', 'Prof.' => 'Prof.', 'Dr.' => 'Dr.')));
+		echo $this->Form->input('title', array('label' => 'Titel', 'options' => array('' => '', 'Herr' => 'Herr', 'Frau' => 'Frau')));
+		echo $this->Form->input('first_name', array('label' => 'Vorname'));
+		echo $this->Form->input('name', array('label' => 'Nachname'));
 		echo $this->Form->input('position', array('label' => 'Position'));
 		echo $this->Form->input('department', array('label' => 'Abteilung'));
 		echo $this->Form->input('email', array('label' => 'E-Mail'));
@@ -23,4 +25,4 @@
 	</fieldset>
 <?php echo $this->Form->end('Änderungen speichern');?>
 </div>
-<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktperson löschen', array('action' => 'delete', $contact_person['ContactPerson']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktperson '.$contact_person['ContactPerson']['name'].' '.$contact_person['ContactPerson']['surname'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>
+<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktperson löschen', array('action' => 'delete', $contact_person['ContactPerson']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktperson '.$contact_person['ContactPerson']['first_name'].' '.$contact_person['ContactPerson']['name'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>

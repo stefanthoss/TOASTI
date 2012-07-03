@@ -12,8 +12,8 @@
 	<table class="table table-striped">
 	<tr>
 			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
-			<th><?php echo $this->Paginator->sort('name', 'Vorname');?></th>
-			<th><?php echo $this->Paginator->sort('surname', 'Nachname');?></th>
+			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
+			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
 			<th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
 			<th><?php echo $this->Paginator->sort('phone', 'Telefonnummer');?></th>
 			<th><?php echo $this->Paginator->sort('mobile', 'Handynummer');?></th>
@@ -21,14 +21,13 @@
 			<th>Notiz</th>
 			<th class="actions">Aktionen</th>
 	</tr>
-	<?php
-	foreach ($contact_persons as $contact_person): ?>
+	<?php foreach ($contact_persons as $contact_person): ?>
 	<tr>
 		<td>
 			<?php echo $this->Html->link($contact_person['Company']['name'], array('controller' => 'companies', 'action' => 'view', $contact_person['Company']['id'])); ?>
 		</td>
+		<td><?php echo $contact_person['ContactPerson']['gender']; ?> <?php echo $contact_person['ContactPerson']['title']; ?> <?php echo $contact_person['ContactPerson']['first_name']; ?></td>
 		<td><?php echo $contact_person['ContactPerson']['name']; ?></td>
-		<td><?php echo $contact_person['ContactPerson']['surname']; ?></td>
 		<td><?php echo $this->Html->link($contact_person['ContactPerson']['email'], 'mailto:'.$contact_person['ContactPerson']['email']); ?></td>
 		<td><?php echo $contact_person['ContactPerson']['phone']; ?></td>
 		<td><?php echo $contact_person['ContactPerson']['mobile']; ?></td>

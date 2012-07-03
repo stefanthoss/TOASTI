@@ -4,7 +4,7 @@ class ContactPerson extends AppModel {
 public $name = 'ContactPerson';
 public $belongsTo = array('Company');
 public $validate = array(
-     'surname' => array(
+     'name' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Ein Nachname wird benötigt.'

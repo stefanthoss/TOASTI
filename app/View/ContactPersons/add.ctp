@@ -5,8 +5,10 @@
         <legend>Kontaktperson hinzufügen</legend>
 	<?php
 		echo $this->Form->input('company_id', array('label' => 'Unternehmen'));
-		echo $this->Form->input('name', array('label' => 'Vorname'));
-		echo $this->Form->input('surname', array('label' => 'Nachname'));
+		echo $this->Form->input('gender', array('label' => 'Anrede', 'options' => array('' => '', 'Prof.' => 'Prof.', 'Dr.' => 'Dr.')));
+		echo $this->Form->input('title', array('label' => 'Titel', 'options' => array('' => '', 'Herr' => 'Herr', 'Frau' => 'Frau')));
+		echo $this->Form->input('first_name', array('label' => 'Vorname'));
+		echo $this->Form->input('name', array('label' => 'Nachname'));
 		echo $this->Form->input('position', array('label' => 'Position'));
 		echo $this->Form->input('department', array('label' => 'Abteilung'));
 		echo $this->Form->input('email', array('label' => 'E-Mail'));

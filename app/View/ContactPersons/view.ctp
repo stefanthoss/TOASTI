@@ -1,5 +1,5 @@
 <?php $this->set('title_for_layout', $contact_person['ContactPerson']['name'].' '.$contact_person['ContactPerson']['surname']); ?>
-<h1><?php echo $contact_person['ContactPerson']['name']; ?> <?php echo $contact_person['ContactPerson']['surname']; ?></h1>
+<h1><?php echo $contact_person['ContactPerson']['gender']; ?> <?php echo $contact_person['ContactPerson']['title']; ?> <?php echo $contact_person['ContactPerson']['name']; ?> <?php echo $contact_person['ContactPerson']['surname']; ?></h1>
 
 <div class="contact_persons view row">
 <table class="table table-condensed span6">
