@@ -116,6 +116,14 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Companies/view');
     $this->Acl->allow($group, 'controllers/Users/index');
 
+    /* allow 'crc' to do just certain things */
+    echo "allow member<br />";
+    $group->id = 4;
+    $this->Acl->deny($group, 'controllers');
+    $this->Acl->allow($group, 'controllers/Companies');
+    $this->Acl->allow($group, 'controllers/Events');
+    $this->Acl->allow($group, 'controllers/Users/index');
+
     /* done message */
     echo "all done";
     exit;

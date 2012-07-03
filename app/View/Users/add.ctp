@@ -5,8 +5,8 @@
 	<?php
 		echo $this->Form->input('username', array('label' => 'Nutzername'));
 		echo $this->Form->input('password', array('label' => 'Passwort'));
-		echo $this->Form->input('name', array('label' => 'Vorname'));
-		echo $this->Form->input('surname', array('label' => 'Nachname'));
+		echo $this->Form->input('first_name', array('label' => 'Vorname'));
+		echo $this->Form->input('name', array('label' => 'Nachname'));
 		echo $this->Form->input('group_id', array('label' => 'Gruppe'));
 	?>
 	</fieldset>

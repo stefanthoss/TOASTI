@@ -18,7 +18,7 @@ class User extends AppModel {
                 'message' => 'Ein Passwort wird benötigt.'
             )
         ),
-        'surname' => array(
+        'name' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Ein Nachname wird benötigt.'

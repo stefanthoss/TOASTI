@@ -1,8 +1,8 @@
 /*
 -- Query: SELECT * FROM toasti_db.acos
--- Date: 2012-06-17 19:20
+-- Date: 2012-07-03 18:28
 */
-INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (50,NULL,NULL,NULL,'controllers',1,50);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (50,NULL,NULL,NULL,'controllers',1,84);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (51,50,NULL,NULL,'Companies',2,13);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (52,51,NULL,NULL,'index',3,4);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (53,51,NULL,NULL,'view',5,6);
@@ -27,3 +27,20 @@ INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`)
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (72,65,NULL,NULL,'logout',43,44);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (73,65,NULL,NULL,'initDB',45,46);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (74,50,NULL,NULL,'AclExtras',48,49);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (75,50,NULL,NULL,'Events',50,59);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (76,75,NULL,NULL,'index',51,52);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (77,75,NULL,NULL,'add',53,54);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (78,75,NULL,NULL,'delete',55,56);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (79,75,NULL,NULL,'edit',57,58);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (80,50,NULL,NULL,'ContactPersons',60,71);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (81,80,NULL,NULL,'index',61,62);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (82,80,NULL,NULL,'view',63,64);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (83,80,NULL,NULL,'add',65,66);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (84,80,NULL,NULL,'delete',67,68);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (85,80,NULL,NULL,'edit',69,70);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (86,50,NULL,NULL,'Contacts',72,83);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (87,86,NULL,NULL,'index',73,74);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (88,86,NULL,NULL,'view',75,76);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (89,86,NULL,NULL,'add',77,78);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (90,86,NULL,NULL,'delete',79,80);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (91,86,NULL,NULL,'edit',81,82);

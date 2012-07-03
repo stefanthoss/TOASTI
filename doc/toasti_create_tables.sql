@@ -24,10 +24,13 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`contact_persons`
+-- Table `toasti_db`.`contact_people`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_persons` (
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_people` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `gender` VARCHAR(45) NULL ,
+  `title` VARCHAR(45) NULL ,
+  `first_name` VARCHAR(45) NULL ,
   `name` VARCHAR(45) NOT NULL ,
   `position` VARCHAR(45) NULL ,
   `department` VARCHAR(45) NULL ,
@@ -41,7 +44,7 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_persons` (
   `city` VARCHAR(45) NULL ,
   `country` VARCHAR(45) NULL ,
   `note` TEXT NULL ,
-  `company_id` VARCHAR(45) NOT NULL ,
+  `company_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_contact_person_company` (`company_id` ASC) )
 ENGINE = MyISAM
@@ -65,7 +68,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`groups`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`groups` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -78,8 +81,8 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `username` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(45) NOT NULL ,
-  `name` VARCHAR(45) NULL ,
-  `surname` VARCHAR(45) NOT NULL ,
+  `first_name` VARCHAR(45) NULL ,
+  `name` VARCHAR(45) NOT NULL ,
   `group_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,

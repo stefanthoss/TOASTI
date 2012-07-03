@@ -10,8 +10,8 @@
 	<table class="table table-striped">
 	<tr>
 			<th><?php echo $this->Paginator->sort('username', 'Nutzername');?></th>
-			<th><?php echo $this->Paginator->sort('name', 'Vorname');?></th>
-			<th><?php echo $this->Paginator->sort('surname', 'Nachname');?></th>
+			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
+			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
 			<th><?php echo $this->Paginator->sort('group_id', 'Gruppe');?></th>
 			<th class="actions">Aktionen</th>
 	</tr>
@@ -19,8 +19,8 @@
 	foreach ($users as $user): ?>
 	<tr>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['surname']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
 		</td>
