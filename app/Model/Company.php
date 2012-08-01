@@ -14,4 +14,18 @@ public $validate = array(
 	'message' => 'Keine gültige PLZ eingegeben.'
     )
 );
+
+public $hasMany = array(
+	'Contact' => array(
+		'className' => 'Contact',
+		'foreignKey' => 'company_id',
+		'dependent' => false
+	)
+);
+
+var $belongsTo = array(
+    'Sector' => array(
+        'className'    => 'Sector',
+        'foreignKey'    => 'sector_id'
+));
 }

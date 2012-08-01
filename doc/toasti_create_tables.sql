@@ -6,6 +6,16 @@ CREATE SCHEMA IF NOT EXISTS `toasti_db` DEFAULT CHARACTER SET latin1 COLLATE lat
 USE `toasti_db` ;
 
 -- -----------------------------------------------------
+-- Table `toasti_db`.`sectors`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`sectors` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `toasti_db`.`companies`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`companies` (
@@ -17,16 +27,18 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`companies` (
   `city` VARCHAR(45) NULL ,
   `country` VARCHAR(45) NULL ,
   `note` TEXT NULL ,
-  PRIMARY KEY (`id`) )
+  `sector_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_companies_company_sector1` (`sector_id` ASC) )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`contact_people`
+-- Table `toasti_db`.`contacts`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`contact_people` (
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`contacts` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `gender` VARCHAR(45) NULL ,
   `title` VARCHAR(45) NULL ,
@@ -93,29 +105,29 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`contacts`
+-- Table `toasti_db`.`cooperations`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`contacts` (
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`cooperations` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `date` DATE NOT NULL ,
   `cooperation_kind` VARCHAR(45) NULL ,
   `note` TEXT NULL ,
-  `contact_person_id` INT NOT NULL ,
+  `contact_id` INT NOT NULL ,
   `event_id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
   INDEX `fk_contacting_event1` (`event_id` ASC) ,
   INDEX `fk_contacting_user1` (`user_id` ASC) ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_contacting_contact_person1` (`contact_person_id` ASC) )
+  INDEX `fk_contacting_contact_person1` (`contact_id` ASC) )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`service_branches`
+-- Table `toasti_db`.`branches`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_branches` (
+CREATE  TABLE IF NOT EXISTS `toasti_db`.`branches` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -139,9 +151,9 @@ CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_providers` (
   `street2` VARCHAR(45) NULL ,
   `zip` VARCHAR(45) NULL ,
   `country` VARCHAR(45) NULL ,
-  `service_branch_id` INT NOT NULL ,
+  `branch_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_service_provider_service_branch1` (`service_branch_id` ASC) )
+  INDEX `fk_service_provider_service_branch1` (`branch_id` ASC) )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;

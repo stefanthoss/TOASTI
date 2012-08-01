@@ -2,9 +2,10 @@
 <div class="companies form">
 <?php echo $this->Form->create('Company', array('action' => 'edit')); ?>
     <fieldset>
-        <legend><?php echo __('Unternehmen bearbeiten'); ?></legend>
+        <legend>Unternehmen bearbeiten</legend>
     <?php
         echo $this->Form->input('name', array('label' => 'Name'));
+        echo $this->Form->input('sector_id', array('label' => 'Branche'));
         echo $this->Form->input('street', array('label' => 'Straße'));
         echo $this->Form->input('street2', array('label' => 'Adresszusatz'));
         echo $this->Form->input('zip', array('label' => 'PLZ'));

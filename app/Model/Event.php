@@ -9,4 +9,12 @@ public $validate = array(
             )
     )
 );
+
+public $hasMany = array(
+	'cooperation' => array(
+		'className' => 'Cooperation',
+		'foreignKey' => 'event_id',
+		'dependent' => false
+	)
+);
 }
