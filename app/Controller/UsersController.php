@@ -71,6 +71,21 @@ class UsersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+	public function profile() {
+		$id = $this->Auth->user('id');
+		$this->User->id = $id;
+      		$this->set('user', $this->User->read(null, $id));
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('Das Profil wurde gespeichert.');
+			} else {
+				$this->Session->setFlash('Das Profil konnte nicht gespeichert werden.');
+			}
+		} else {
+			$this->request->data = $this->User->read(null, $id);
+		}
+	}
+
 public function login() {
     if ($this->request->is('post')) {
         if ($this->Auth->login()) {
@@ -115,6 +130,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Companies/index');
     $this->Acl->allow($group, 'controllers/Companies/view');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* allow 'crc' to do just certain things */
     echo "allow member<br />";

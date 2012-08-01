@@ -8,8 +8,8 @@ class User extends AppModel {
     public $validate = array(
         'username' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
-                'message' => 'Ein Nutzername wird benötigt.'
+                'rule' => array('email'),
+                'message' => 'Als Nutzername wird eine gültige E-Mail-Adresse benötigt.'
             )
         ),
         'password' => array(

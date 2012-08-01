@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout','Startseite'); ?>
       <div class="hero-unit">
-          <h2>Hier kommt TOASTI, das Tool für alle Fälle.</h2>
+          <h2 align="center">TOASTI - TOol for All STrategic Information</h2>
       </div>
 
       <div class="row">
@@ -18,7 +18,7 @@ Noch nicht verfügbar.
        </div>
         <div class="span4">
           <h2>Mitgliederdatenbank</h2>
-           <p>Informationen über alle (hier registrierten) Mitglieder.</p>
+           <p>Informationen über alle Mitglieder.</p>
 <div class="alert">
 Noch nicht verfügbar.
 </div>

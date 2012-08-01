@@ -45,8 +45,10 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {
-        $this->set('username', $this->Auth->user('username'));
-        $this->set('fullname', $this->Auth->user('name').' '.$this->Auth->user('surname'));
+	if($this->Auth->loggedIn()) {
+		$this->loadModel('User');
+		$this->set('user', $this->User->read(null, $this->Auth->user('id')));
+	}
 
         /* configure authentification */
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
