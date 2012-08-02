@@ -119,9 +119,12 @@ public function initDB() {
     $group->id = 3;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies');
+    $this->Acl->allow($group, 'controllers/Contacts');
+    $this->Acl->allow($group, 'controllers/Cooperations');
+    $this->Acl->allow($group, 'controllers/Sectors');
+    $this->Acl->allow($group, 'controllers/Events');
     $this->Acl->allow($group, 'controllers/Users');
     $this->Acl->deny($group, 'controllers/Users/delete');
-    $this->Acl->allow($group, 'controllers/Events');
 
     /* allow 'member' to do just certain things */
     echo "allow member<br />";
@@ -129,16 +132,27 @@ public function initDB() {
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies/index');
     $this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Contacts/index');
+    $this->Acl->allow($group, 'controllers/Contacts/view');
+    $this->Acl->allow($group, 'controllers/Cooperations/index');
+    $this->Acl->allow($group, 'controllers/Cooperations/view');
+    $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/view');
     $this->Acl->allow($group, 'controllers/Users/index');
     $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* allow 'crc' to do just certain things */
-    echo "allow member<br />";
-    $group->id = 4;
+    echo "allow crc<br />";
+    $group->id = 0;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies');
-    $this->Acl->allow($group, 'controllers/Events');
+    $this->Acl->allow($group, 'controllers/Contacts');
+    $this->Acl->allow($group, 'controllers/Cooperations');
+    $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/view');
+    $this->Acl->allow($group, 'controllers/Events/edit');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* done message */
     echo "all done";
