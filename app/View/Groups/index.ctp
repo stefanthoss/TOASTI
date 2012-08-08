@@ -17,7 +17,6 @@
 	<tr>
 		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $group['Group']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
 			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
 		</td>
 	</tr>
