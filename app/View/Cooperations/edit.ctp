@@ -14,4 +14,4 @@
 	</fieldset>
 <?php echo $this->Form->end('Änderungen speichern');?>
 </div>
-<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktaufnahme löschen', array('action' => 'delete', $contact['Contact']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktaufnahme löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>
+<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Kontaktaufnahme löschen', array('action' => 'delete', $cooperation['Contact']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du die Kontaktaufnahme löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>

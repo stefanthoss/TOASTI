@@ -29,7 +29,7 @@ class CooperationsController extends AppController {
 				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht hinzugefügt werden.');
 			}
 		}
-		$contacts = $this->Cooperation->Contact->find('list');
+		$contacts = $this->Cooperation->Contact->find('list', array('fields' => array('name')));
 		$this->set(compact('contacts'));
 		$users = $this->Cooperation->User->find('list');
 		$this->set(compact('users'));
@@ -56,20 +56,17 @@ public function delete($id = null) {
 	public function edit($id = null) {
     $this->Cooperation->id = $id;
     $this->set('cooperation', $this->Cooperation->read(null, $id));
-		if (!$this->Cooperation->exists()) {
-            throw new NotFoundException('Ungültige Kontaktaufnahme');
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Cooperation->save($this->request->data)) {
-				$this->Session->setFlash('Die Kontaktaufnahme wurde gespeichert.');
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht gespeichert werden.');
-			}
-		} else {
-			$this->request->data = $this->Contact->read(null, $id);
-		}
-		$contacts = $this->Cooperation->Contact->find('list');
+		    if ($this->request->is('get')) {
+        $this->request->data = $this->Cooperation->read();
+    } else {
+        if ($this->Cooperation->save($this->request->data)) {
+            $this->Session->setFlash('Die Kontaktaufnahme wurden gespeichert.');
+            $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash('Die Kontaktaufnahme konnten nicht gespeichert werden.');
+        }
+    }
+		$contacts = $this->Cooperation->Contact->find('list', array('fields' => array('name')));
 		$this->set(compact('contacts'));
 		$users = $this->Cooperation->User->find('list');
 		$this->set(compact('users'));
