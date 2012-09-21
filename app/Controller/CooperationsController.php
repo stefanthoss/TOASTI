@@ -67,7 +67,7 @@ public function delete($id = null) {
 				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht gespeichert werden.');
 			}
 		} else {
-			$this->request->data = $this->Contact->read(null, $id);
+			$this->request->data = $this->Cooperation->read(null, $id);
 		}
 		$contacts = $this->Cooperation->Contact->find('list');
 		$this->set(compact('contacts'));
