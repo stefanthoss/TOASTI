@@ -34,8 +34,8 @@ class User extends AppModel {
     );
 
 public $hasMany = array(
-	'Contact' => array(
-		'className' => 'Contact',
+	'Cooperation' => array(
+		'className' => 'Cooperation',
 		'foreignKey' => 'user_id',
 		'dependent' => false
 	)
