@@ -20,10 +20,27 @@ TOASTI basiert auf folgenden Frameworks/Bibliotheken:
 Installation
 ----------
 
-Zur Installation sollte zuerst eine kompatible CakePHP-Version installiert und die Konfigurationsdateien in /app/Config/ angepasst werden (die Konfigurationsdateien sind aus Sicherheitsgründen nicht im Repository vorhanden). Das Aufrufen des Root-Verzeichnises von CakePHP im Browser zeigt, ob die Konfiguration korrekt ist. Anschließend müssen die von TOASTI benötigten MySQL-Datenbanken erstellt (siehe Datei doc/toasti_create_tables.sql) und TOASTI in das CakePHP-Installationsverzeichnis kopiert werden.
-In der Datei /app/Controller/UsersController.php muss anschließend in Zeile 7 bei `$this->Auth->allow('*');` der Kommentar entfernt werden. Dann kann man im Browser über toasti/users/add einen Administrator hinzuzufügen.
-Für die Berechtigungen müssen zunächst die Zugriffspunkte in der Datenbank definiert werden (siehe Datei doc/toasti_create_acos.sql). Die Zugriffsrechte werden gesetzt, indem man toasti/users/initdb im Browser aufruft.
-Danach sollte die Zeile `$this->Auth->allow('*');` wieder auskommentiert werden, damit nur noch Administratoren andere Nutzer registrieren können.
+- Einen Apache und einen MySQL-Server vorbereiten.
+- TOASTI herunterladen und entpacken.
+- Ausführen: /doc/toasti_create_tables.sql
+- CakePHP v2.1.5 herunterladen und im Apache in das htdocs-Verzeichnis entpacken.
+- Testen, ob die Startseite von CakePHP angezeigt wird. Diese sollte mehrere Probleme bzgl. der Config melden.
+- Bei CakePHP ins Verzeichnis /app/Config/ wechseln.
+- core.php: Salt beliebig austauschen (Länge beibehalten)
+- core.php: Seed beliebig austauschen (Länge beibehalten)
+- database.php.default: Datenbankdaten angeben
+- database.php.default: Umbenennen in "database.php"
+- Die Startseite von CakePHP sollte keine Fehler mehr anzeigen.
+- Das Verzeichnis /app/Config/ sichern.
+- Das Verzeichnis von CakePHP löschen.
+- TOASTI ins htdocs-Verzeichnis kopieren.
+- Das gesicherte Config-Verzeichnis in TOASTI im Verzeichnis /app/ einfügen.
+- Jetzt sollte die Startseite von TOASTI erscheinen.
+- In der Datei /app/Controller/UsersController.php in Zeile 7 bei `$this->Auth->allow('*');` den Kommentar entfernen.
+- Im Browser über toasti/users/add einen Administrator hinzufügen.
+- Für die Berechtigungen müssen zunächst die Zugriffspunkte in der Datenbank definiert werden (siehe Datei doc/toasti_create_acos.sql).
+- Die Zugriffsrechte werden gesetzt, indem man toasti/users/initdb im Browser aufruft.
+- Danach die Zeile `$this->Auth->allow('*');` wieder auskommentieren, damit nur noch Administratoren andere Nutzer registrieren können.
 
 
 Lizenz
