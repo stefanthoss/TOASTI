@@ -80,7 +80,7 @@ COLLATE = utf8_general_ci;
 -- Table `toasti_db`.`groups`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `toasti_db`.`groups` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;

@@ -36,10 +36,12 @@ Installation
 - TOASTI ins htdocs-Verzeichnis kopieren.
 - Das gesicherte Config-Verzeichnis in TOASTI im Verzeichnis /app/ einfügen.
 - Jetzt sollte die Startseite von TOASTI erscheinen.
-- In der Datei /app/Controller/UsersController.php in Zeile 7 bei `$this->Auth->allow('*');` den Kommentar entfernen.
-- Im Browser über toasti/users/add einen Administrator hinzufügen.
 - Für die Berechtigungen müssen zunächst die Zugriffspunkte in der Datenbank definiert werden (siehe Datei doc/toasti_create_acos.sql).
-- Die Zugriffsrechte werden gesetzt, indem man toasti/users/initdb im Browser aufruft.
+- In der Datei /app/Controller/UsersController.php in Zeile 7 bei `$this->Auth->allow('*');` den Kommentar entfernen.
+- In der Datei /app/Controller/GroupsController.php in Zeile 12 bei `$this->Auth->allow('*');` den Kommentar entfernen.
+- Im Browser über toasti/groups/add folgende vier Gruppen hinzufügen: `Admin, Vorstand, Orgateam, CRC`
+- Im Browser /toasti/users/initdb aufrufen. Damit wird festgesetzt, welche Gruppen, welche Rechte haben.
+- Im Browser über toasti/users/add einen Administrator hinzufügen.
 - Danach die Zeile `$this->Auth->allow('*');` wieder auskommentieren, damit nur noch Administratoren andere Nutzer registrieren können.
 
 

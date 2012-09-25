@@ -137,7 +137,6 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations/index');
     $this->Acl->allow($group, 'controllers/Cooperations/view');
     $this->Acl->allow($group, 'controllers/Events/index');
-    $this->Acl->allow($group, 'controllers/Events/view');
     $this->Acl->allow($group, 'controllers/Users/index');
     $this->Acl->allow($group, 'controllers/Users/profile');
 
@@ -150,7 +149,6 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations');
     $this->Acl->allow($group, 'controllers/Sectors');
     $this->Acl->allow($group, 'controllers/Events/index');
-    $this->Acl->allow($group, 'controllers/Events/view');
     $this->Acl->allow($group, 'controllers/Events/edit');
     $this->Acl->allow($group, 'controllers/Users/index');
     $this->Acl->allow($group, 'controllers/Users/profile');
