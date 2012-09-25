@@ -90,7 +90,7 @@ COLLATE = utf8_general_ci;
 -- Table `groups`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `groups` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;

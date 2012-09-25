@@ -42,7 +42,7 @@ Installation
 - Im Browser über toasti/groups/add folgende vier Gruppen hinzufügen: `Admin, Vorstand, Orgateam, CRC`
 - Im Browser /toasti/users/initdb aufrufen. Damit wird festgesetzt, welche Gruppen, welche Rechte haben.
 - Im Browser über toasti/users/add einen Administrator hinzufügen.
-- Danach die Zeile `$this->Auth->allow('*');` wieder auskommentieren, damit nur noch Administratoren andere Nutzer registrieren können.
+- Danach die Zeile `$this->Auth->allow('*');` in UsersController.php und in GroupsController.php wieder auskommentieren, damit nur noch Administratoren andere Nutzer registrieren können.
 
 
 Lizenz
