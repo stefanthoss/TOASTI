@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 Configure::write('System.name','TOASTI');
-Configure::write('System.author','KMC des VWI ESTIEM Darmstadt');
+Configure::write('System.author','KMC der VWI ESTIEM Hochschulgruppe TU Darmstadt e.V.');
 
 echo $this->Html->css('bootstrap.min');
 echo $this->Html->css('bootstrap-responsive.min');
