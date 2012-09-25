@@ -29,12 +29,9 @@ class CooperationsController extends AppController {
 				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht hinzugefügt werden.');
 			}
 		}
-		$contacts = $this->Cooperation->Contact->find('list', array('fields' => array('name')));
-		$this->set(compact('contacts'));
-		$users = $this->Cooperation->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Cooperation->Event->find('list');
-		$this->set(compact('events'));
+		$this->set('contacts', $this->Cooperation->Contact->find('list', array('order' => array('Contact.name' => 'asc'))));
+		$this->set('users', $this->Cooperation->User->find('list', array('order' => array('User.name' => 'asc'))));
+		$this->set('events', $this->Cooperation->Event->find('list', array('order' => array('Event.name' => 'asc'))));
 	}
 
 public function delete($id = null) {
@@ -66,11 +63,8 @@ public function delete($id = null) {
             $this->Session->setFlash('Die Kontaktaufnahme konnten nicht gespeichert werden.');
         }
     }
-		$contacts = $this->Cooperation->Contact->find('list', array('fields' => array('name')));
-		$this->set(compact('contacts'));
-		$users = $this->Cooperation->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Cooperation->Event->find('list');
-		$this->set(compact('events'));
+		$this->set('contacts', $this->Cooperation->Contact->find('list', array('order' => array('Contact.name' => 'asc'))));
+		$this->set('users', $this->Cooperation->User->find('list', array('order' => array('User.name' => 'asc'))));
+		$this->set('events', $this->Cooperation->Event->find('list', array('order' => array('Event.name' => 'asc'))));
 	}
 }

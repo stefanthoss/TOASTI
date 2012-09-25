@@ -29,8 +29,7 @@ class ContactsController extends AppController {
 				$this->Session->setFlash('Die Kontaktperson konnte nicht hinzugefügt werden.');
 			}
 		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
+		$this->set('companies', $this->Contact->Company->find('list', array('order' => array('Company.name' => 'asc'))));
 	}
 
 public function delete($id = null) {
@@ -65,7 +64,6 @@ public function delete($id = null) {
 		} else {
 			$this->request->data = $this->Contact->read(null, $id);
 		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
+		$this->set('companies', $this->Contact->Company->find('list', array('order' => array('Company.name' => 'asc'))));
 	}
 }

@@ -2,6 +2,9 @@
 App::uses('AppModel', 'Model', 'Controller/Component');
 class Contact extends AppModel {
 public $name = 'Contact';
+var $displayField = "full_name"; 
+public $virtualFields = array('full_name' => 'CONCAT(Contact.first_name, " ", Contact.name)');
+
 public $validate = array(
      'name' => array(
             'required' => array(
