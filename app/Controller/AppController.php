@@ -47,7 +47,8 @@ class AppController extends Controller {
     public function beforeFilter() {
 	if($this->Auth->loggedIn()) {
 		$this->loadModel('User');
-		$this->set('current_user', $this->Auth->user());
+		$this->set('current_user', $this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))));
+
 	}
 
         /* configure authentification */
