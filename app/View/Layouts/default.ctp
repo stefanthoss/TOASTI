@@ -47,8 +47,8 @@ echo $this->fetch('script');
               <li><?php echo $this->Html->link('Nutzerverwaltung', array('controller' => 'users', 'action' => 'index')); ?></li>
             </ul>
             <ul class="nav pull-right">
-              <?php if(isset($user)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($user['first_name'].' '.$user['name'], array('controller' => 'users', 'action' => 'profile')); echo ' ('.$user['group_id'].')'; ?></li>
+              <?php if(isset($current_user)) { ?>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['first_name'].' '.$current_user['User']['name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
               <?php } else { ?>

@@ -1,5 +1,4 @@
 <?php
-App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
     public function beforeFilter() {
@@ -109,36 +108,52 @@ public function initDB() {
     echo "define group rights...<br />";
     $group = $this->User->Group;
 
-    /* allow 'admin' to do everything */
+    /* allow 'admin' (ID 1) to do everything */
     echo "allow admin<br />";
     $group->id = 1;
     $this->Acl->allow($group, 'controllers');
 
-    /* allow 'board' to do everything in companies */
+    /* allow 'board' (ID 2) to do everything in companies */
     echo "allow board<br />";
-    $group->id = 3;
+    $group->id = 2;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies');
+    $this->Acl->allow($group, 'controllers/Contacts');
+    $this->Acl->allow($group, 'controllers/Cooperations');
+    $this->Acl->allow($group, 'controllers/Sectors');
+    $this->Acl->allow($group, 'controllers/Events');
+    $this->Acl->allow($group, 'controllers/Groups/index');
     $this->Acl->allow($group, 'controllers/Users');
     $this->Acl->deny($group, 'controllers/Users/delete');
-    $this->Acl->allow($group, 'controllers/Events');
 
-    /* allow 'member' to do just certain things */
+    /* allow 'member' (ID 3) to do just certain things */
     echo "allow member<br />";
-    $group->id = 2;
+    $group->id = 3;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies/index');
     $this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Contacts/index');
+    $this->Acl->allow($group, 'controllers/Contacts/view');
+    $this->Acl->allow($group, 'controllers/Cooperations/index');
+    $this->Acl->allow($group, 'controllers/Cooperations/view');
+    $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/view');
     $this->Acl->allow($group, 'controllers/Users/index');
     $this->Acl->allow($group, 'controllers/Users/profile');
 
-    /* allow 'crc' to do just certain things */
-    echo "allow member<br />";
+    /* allow 'crc' (ID 4) to do just certain things */
+    echo "allow crc<br />";
     $group->id = 4;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies');
-    $this->Acl->allow($group, 'controllers/Events');
+    $this->Acl->allow($group, 'controllers/Contacts');
+    $this->Acl->allow($group, 'controllers/Cooperations');
+    $this->Acl->allow($group, 'controllers/Sectors');
+    $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/view');
+    $this->Acl->allow($group, 'controllers/Events/edit');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* done message */
     echo "all done";
