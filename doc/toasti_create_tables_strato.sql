@@ -2,13 +2,23 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `toasti_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_german1_ci ;
-USE `toasti_db` ;
+-- -----------------------------------------------------
+-- Use the following two commands if you need a new schema.
+-- 
+-- When using Strato you have to create schemas through the Customer Service on their website.
+-- Strato chooses the name for the schema. You can not change it.
+-- This script is ready for use with Strato.
+-- 
+-- Remi Freiwald
+-- -----------------------------------------------------
+
+-- CREATE SCHEMA IF NOT EXISTS `toasti_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_german1_ci ;
+-- USE `toasti_db` ;
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`sectors`
+-- Table `sectors`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`sectors` (
+CREATE  TABLE IF NOT EXISTS `sectors` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -16,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`companies`
+-- Table `companies`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`companies` (
+CREATE  TABLE IF NOT EXISTS `companies` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `street` VARCHAR(45) NULL ,
@@ -36,9 +46,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`contacts`
+-- Table `contacts`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`contacts` (
+CREATE  TABLE IF NOT EXISTS `contacts` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `gender` VARCHAR(45) NULL ,
   `title` VARCHAR(45) NULL ,
@@ -65,9 +75,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`events`
+-- Table `events`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`events` (
+CREATE  TABLE IF NOT EXISTS `events` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -77,9 +87,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`groups`
+-- Table `groups`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`groups` (
+CREATE  TABLE IF NOT EXISTS `groups` (
   `id` INT NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -87,9 +97,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`users`
+-- Table `users`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`users` (
+CREATE  TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `username` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(45) NOT NULL ,
@@ -105,9 +115,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`cooperations`
+-- Table `cooperations`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`cooperations` (
+CREATE  TABLE IF NOT EXISTS `cooperations` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `date` DATE NOT NULL ,
   `cooperation_kind` VARCHAR(45) NULL ,
@@ -125,9 +135,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`branches`
+-- Table `branches`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`branches` (
+CREATE  TABLE IF NOT EXISTS `branches` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -137,9 +147,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`service_providers`
+-- Table `service_providers`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_providers` (
+CREATE  TABLE IF NOT EXISTS `service_providers` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `contact_person` VARCHAR(45) NULL ,
@@ -160,9 +170,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`service_orders`
+-- Table `service_orders`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`service_orders` (
+CREATE  TABLE IF NOT EXISTS `service_orders` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `date` DATE NOT NULL ,
   `description` VARCHAR(45) NULL ,
@@ -182,9 +192,9 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`aros_acos`
+-- Table `aros_acos`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`aros_acos` (
+CREATE  TABLE IF NOT EXISTS `aros_acos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `aro_id` INT(10) UNSIGNED NOT NULL ,
   `aco_id` INT(10) UNSIGNED NOT NULL ,
@@ -199,9 +209,9 @@ COLLATE = latin1_german1_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`aros`
+-- Table `aros`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`aros` (
+CREATE  TABLE IF NOT EXISTS `aros` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `parent_id` INT(10) NULL DEFAULT NULL ,
   `model` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
@@ -216,9 +226,9 @@ COLLATE = latin1_german1_ci;
 
 
 -- -----------------------------------------------------
--- Table `toasti_db`.`acos`
+-- Table `acos`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `toasti_db`.`acos` (
+CREATE  TABLE IF NOT EXISTS `acos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `parent_id` INT(10) NULL DEFAULT NULL ,
   `model` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_german1_ci' NULL DEFAULT '' ,
