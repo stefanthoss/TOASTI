@@ -1,6 +1,7 @@
 <?php $this->set('title_for_layout','Nutzeransicht'); ?>
 <div class="users view row">
-<h2>Nutzerinfos</h2>
+<h1>Nutzerinfos <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $user['User']['id']), array('class' => 'btn', 'escape' => false)); ?></h1>
+<br />
 
 <div class="users view row">
 <table class="table table-condensed span4">
