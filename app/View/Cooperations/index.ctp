@@ -26,7 +26,7 @@
 		<td><?php echo $this->Html->link($cooperation['Contact']['first_name'].' '.$cooperation['Contact']['name'], array('controller' => 'contacts', 'action' => 'view', $cooperation['Contact']['id'])); ?></td>
 		<td><?php echo $this->Html->link($cooperation['Event']['name'], array('controller' => 'events', 'action' => 'view', $cooperation['Event']['id'])); ?></td>
 		<td><?php echo $this->Html->link($cooperation['User']['first_name'].' '.$cooperation['User']['name'], array('controller' => 'users', 'action' => 'view', $cooperation['User']['id'])); ?></td>
-		<td><?php echo $cooperation['Cooperation']['date']; ?></td>
+		<td><?php echo $this->Time->format('d.m.Y', $cooperation['Cooperation']['date']); ?></td>
 		<td><?php echo $cooperation['Cooperation']['cooperation_kind']; ?></td>
                 <td><?php if(!empty($cooperation['Cooperation']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 		<td class="actions">

@@ -4,7 +4,7 @@ class CooperationsController extends AppController {
 	parent::beforeFilter();
     }
 
-    public $helpers = array('Html', 'Form');
+    public $helpers = array('Html', 'Form', 'Time');
 
     public function index() {
         $this->Cooperation->recursive = 0;

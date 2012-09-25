@@ -20,8 +20,8 @@ var $belongsTo = array(
 
 public $validate = array(
     'date' => array(
-        'rule' => array('date'),
-        'message' => 'Kein (gültiges) Datum eingegeben eingegeben.'
+        'rule' => array('date', 'ymd'),
+        'message' => 'Kein gültiges Datum eingegeben.'
     )
 );
 }

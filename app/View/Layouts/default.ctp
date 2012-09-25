@@ -15,7 +15,9 @@ Configure::write('System.author','KMC der VWI ESTIEM Hochschulgruppe TU Darmstad
 
 echo $this->Html->css('bootstrap.min');
 echo $this->Html->css('bootstrap-responsive.min');
+echo $this->Html->css('jquery-ui');
 echo $this->Html->script('jquery-1.7.2.min');
+echo $this->Html->script('jquery-ui.min');
 echo $this->Html->script('bootstrap.min');
 echo $this->Html->script('bootstrap-collapse');
 echo $this->Html->script('bootstrap-dropdown');
