@@ -29,12 +29,9 @@ class CooperationsController extends AppController {
 				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht hinzugefügt werden.');
 			}
 		}
-		$contacts = $this->Cooperation->Contact->find('list');
-		$this->set(compact('contacts'));
-		$users = $this->Cooperation->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Cooperation->Event->find('list');
-		$this->set(compact('events'));
+		$this->set('contacts', $this->Cooperation->Contact->find('list', array('order' => array('Contact.name' => 'asc'))));
+		$this->set('users', $this->Cooperation->User->find('list', array('order' => array('User.name' => 'asc'))));
+		$this->set('events', $this->Cooperation->Event->find('list', array('order' => array('Event.name' => 'asc'))));
 	}
 
 public function delete($id = null) {
@@ -56,24 +53,18 @@ public function delete($id = null) {
 	public function edit($id = null) {
     $this->Cooperation->id = $id;
     $this->set('cooperation', $this->Cooperation->read(null, $id));
-		if (!$this->Cooperation->exists()) {
-            throw new NotFoundException('Ungültige Kontaktaufnahme');
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Cooperation->save($this->request->data)) {
-				$this->Session->setFlash('Die Kontaktaufnahme wurde gespeichert.');
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash('Die Kontaktaufnahme konnte nicht gespeichert werden.');
-			}
-		} else {
-			$this->request->data = $this->Contact->read(null, $id);
-		}
-		$contacts = $this->Cooperation->Contact->find('list');
-		$this->set(compact('contacts'));
-		$users = $this->Cooperation->User->find('list');
-		$this->set(compact('users'));
-		$events = $this->Cooperation->Event->find('list');
-		$this->set(compact('events'));
+		    if ($this->request->is('get')) {
+        $this->request->data = $this->Cooperation->read();
+    } else {
+        if ($this->Cooperation->save($this->request->data)) {
+            $this->Session->setFlash('Die Kontaktaufnahme wurden gespeichert.');
+            $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash('Die Kontaktaufnahme konnten nicht gespeichert werden.');
+        }
+    }
+		$this->set('contacts', $this->Cooperation->Contact->find('list', array('order' => array('Contact.name' => 'asc'))));
+		$this->set('users', $this->Cooperation->User->find('list', array('order' => array('User.name' => 'asc'))));
+		$this->set('events', $this->Cooperation->Event->find('list', array('order' => array('Event.name' => 'asc'))));
 	}
 }
