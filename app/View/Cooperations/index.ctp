@@ -16,7 +16,7 @@
 			<th><?php echo $this->Paginator->sort('event', 'Veranstaltung');?></th>
 			<th><?php echo $this->Paginator->sort('user', 'VWI-Mitglied');?></th>
 			<th><?php echo $this->Paginator->sort('date', 'Datum');?></th>
-			<th><?php echo $this->Paginator->sort('cooperation_kind', 'Telefonnummer');?></th>
+			<th><?php echo $this->Paginator->sort('cooperation_kind', 'Kooperationsart');?></th>
 			<th>Notiz</th>
 			<th class="actions">Aktionen</th>
 	</tr>
