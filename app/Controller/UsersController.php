@@ -124,7 +124,6 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Events');
     $this->Acl->allow($group, 'controllers/Groups/index');
     $this->Acl->allow($group, 'controllers/Users');
-    $this->Acl->deny($group, 'controllers/Users/delete');
 
     /* allow 'member' (ID 3) to do just certain things */
     echo "allow member<br />";
@@ -138,6 +137,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations/view');
     $this->Acl->allow($group, 'controllers/Events/index');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/view');
     $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* allow 'crc' (ID 4) to do just certain things */
@@ -151,6 +151,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Events/index');
     $this->Acl->allow($group, 'controllers/Events/edit');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/view');
     $this->Acl->allow($group, 'controllers/Users/profile');
 
     /* done message */
