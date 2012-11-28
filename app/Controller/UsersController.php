@@ -111,16 +111,14 @@ public function login() {
 			    	$this->Session->write(
 				    'Auth.Permissions.'.$permission['Aco']['alias'], true
 				);
-//			    	if(!empty($permission['Aco']['parent_id'])){
-//			    		$parentAco = $this->Acl->Aco->find('first', array(
-//				        'conditions' => array(
-//				            'id' => $permission['Aco']['parent_id']
-//				        )	
-//				    ));
-//			    		$this->Session->write(
-//				        'Auth.Permissions.'.$permission['Aco']['alias'].'.'.$parentAco['Aco']['alias'], true
-//				    );
-//				}
+			    	if(!empty($permission['Aco']['parent_id'])){
+			    		$parentAco = $this->Acl->Aco->find('first', array(
+				        'conditions' => array(
+				            'id' => $permission['Aco']['parent_id']
+				        )	
+				    ));
+			            $this->Session->write('Auth.Permissions.'.$parentAco['Aco']['alias'].'.'.$permission['Aco']['alias'], true);
+				}
 	                }
                     }
 	    }

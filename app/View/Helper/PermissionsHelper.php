@@ -11,8 +11,8 @@ class PermissionsHelper extends AppHelper {
         && $this->Session->read('Auth.Permissions.controllers') === true){
             return true;
         }
-        if($this->Session->check('Auth.Permissions'.$path)
-        && $this->Session->read('Auth.Permissions'.$path) === true){
+        if($this->Session->check('Auth.Permissions.'.$path)
+        && $this->Session->read('Auth.Permissions.'.$path) === true){
             return true;
         }
         return false;

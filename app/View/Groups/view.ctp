@@ -1,5 +1,5 @@
 <?php $this->set('title_for_layout','Gruppenansicht'); ?>
-<h1>Gruppeninfos: <?php echo $group['Group']['name']; ?> <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false)); ?></h1>
+<h1>Gruppeninfos: <?php echo $group['Group']['name']; ?> <?php if($this->Permissions->check('Groups.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false)); } ?></h1>
 <br />
 
 <div class="related">
