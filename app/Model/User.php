@@ -5,7 +5,7 @@ class User extends AppModel {
     public $belongsTo = array('Group');
     public $actsAs = array('Acl' => array('type' => 'requester'));
     var $displayField = "full_name"; 
-    public $virtualFields = array('full_name' => 'CONCAT(User.first_name, " ", User.name)');
+    public $virtualFields = array('full_name' => 'CONCAT(User.name, ", ", User.first_name)');
 
     public $validate = array(
         'username' => array(
