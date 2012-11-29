@@ -18,6 +18,21 @@ class UsersController extends AppController {
             throw new NotFoundException('Ungültiger Nutzer');
         }
         $this->set('user', $this->User->read(null, $id));
+	
+	// Load cooperations for this user
+	$this->loadModel('Cooperation');
+	$cooperations = $this->Cooperation->find('all', array('conditions' => array('User.id' => $id)));
+	
+	// Add company name for each cooperation
+	$this->loadModel('Company');
+	foreach ($cooperations as &$cooperation) {
+		$company_id = $cooperation['Contact']['company_id'];
+		$company = $this->Company->find('first', array('conditions' => array('Company.id' => $company_id)));
+		$company_name = $company['Company']['name'];
+		$cooperation['Contact']['company_name'] = $company_name;
+	}
+	
+	$this->set('cooperations', $cooperations);
     }
 
 	public function add() {
