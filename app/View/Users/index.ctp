@@ -1,8 +1,6 @@
-<?php $this->set('title_for_layout','Mitgliederliste'); ?>
-<ul class="nav nav-tabs">
-<li class="active"><?php echo $this->Html->link('Mitgliederliste', array('controller' => 'users', 'action' => 'index')); ?></li>
-<li><?php if($this->Permissions->check('Groups.index')) { echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); } ?></li>
-</ul>
+<?php $this->set('title_for_layout','Mitglieder'); ?>
+
+<h1>Mitglieder</h1>
 
 <p><?php if($this->Permissions->check('Users.add')) { echo $this->Html->link('Neues Mitglied hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); } ?></p>
 

@@ -1,11 +1,6 @@
-<?php $this->set('title_for_layout','Unternehmensliste'); ?>
+<?php $this->set('title_for_layout','Unternehmen'); ?>
 
-<ul class="nav nav-tabs">
-<li class="active"><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
-<li><?php if($this->Permissions->check('Contacts.index')) { echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); } ?></li>
-<li><?php if($this->Permissions->check('Cooperations.index')) { echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); } ?></li>
-<li><?php if($this->Permissions->check('Sectors.index')) { echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); } ?></li>
-</ul>
+<h1>Unternehmen</h1>
 
 <p><?php if($this->Permissions->check('Companies.add')) { echo $this->Html->link('Neues Unternehmen hinzufügen', array('controller' => 'companies', 'action' => 'add'), array('class' => 'btn')); } ?></p>
 

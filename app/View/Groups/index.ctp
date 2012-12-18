@@ -1,8 +1,6 @@
-<?php $this->set('title_for_layout','Gruppenliste'); ?>
-<ul class="nav nav-tabs">
-<li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Mitgliederliste', array('controller' => 'users', 'action' => 'index')); } ?></li>
-<li class="active"><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
-</ul>
+<?php $this->set('title_for_layout','Gruppen'); ?>
+
+<h1>Gruppen</h1>
 
 <p><?php echo $this->Html->link('Neue Gruppe hinzufügen', array('controller' => 'groups', 'action' => 'add'), array('class' => 'btn')); ?></p>
 

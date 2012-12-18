@@ -31,35 +31,38 @@ echo $this->fetch('script');
 ?>
 </head>
   <body>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <?php echo $this->Html->link(Configure::read('System.name'), array('controller' => 'pages', 'action' => 'home'), array('class' => 'brand')); ?>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
-              <li><?php echo $this->Html->link('Veranstaltungen', array('controller' => 'events', 'action' => 'index')); ?></li>
-              <li><?php echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); ?></li>
-            </ul>
-            <ul class="nav pull-right">
-              <?php if(isset($current_user)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['first_name'].' '.$current_user['User']['name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
-              <li class="divider-vertical"></li>
-              <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
-              <?php } else { ?>
-              <li><p class="navbar-text">Nicht eingeloggt</li>
-              <li class="divider-vertical"></li>
-              <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); ?></li>
-              <?php } ?>
+          <ul class="nav">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Unternehmen<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li><?php if($this->Permissions->check('Companies.index')) { echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); } ?></li>
+              <li><?php if($this->Permissions->check('Contacts.index')) { echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); } ?></li>
+              <li><?php if($this->Permissions->check('Cooperations.index')) { echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); } ?></li>
+              <li><?php if($this->Permissions->check('Sectors.index')) { echo $this->Html->link('Branchen', array('controller' => 'sectors', 'action' => 'index')); } ?></li>
+            </ul></li>
+            <li><?php if($this->Permissions->check('Events.index')) { echo $this->Html->link('Veranstaltungen', array('controller' => 'events', 'action' => 'index')); } ?></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mitglieder<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); } ?></li>
+              <li><?php if($this->Permissions->check('Groups.index')) { echo $this->Html->link('Gruppen', array('controller' => 'groups', 'action' => 'index')); } ?></li>
+            </ul></li>
+           </ul>
+
+           <ul class="nav pull-right">
+             <?php if(isset($current_user)) { ?>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Eingeloggt als <?php echo $current_user['User']['first_name'].' '.$current_user['User']['name'].' ('.$current_user['Group']['name'].')'; ?><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><?php echo $this->Html->link('Profil bearbeiten', array('controller' => 'users', 'action' => 'profile')); ?></li>
+                <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
+               </ul></li>
+             <?php } else { ?>
+               <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); ?></li>
+             <?php } ?>
             </ul>
           </div>
-        </div>
       </div>
     </div>
 
