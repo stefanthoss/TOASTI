@@ -63,7 +63,7 @@ public function bindNode($user) {
     return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
 }
 
-    public function beforeSave() {
+    public function beforeSave($options = array()) {
         $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
         return true;
     }
