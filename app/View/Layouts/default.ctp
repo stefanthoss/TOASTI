@@ -22,7 +22,8 @@ echo $this->Html->script('bootstrap.min');
 echo $this->Html->script('cakebootstrap');
 echo $this->Html->script('js_code');
 
-echo $this->Html->meta('author',Configure::read('System.author'));
+echo $this->Html->meta('robots', 'noindex, nofollow');
+echo $this->Html->meta('author', Configure::read('System.author'));
 
 echo $this->fetch('meta');
 echo $this->fetch('css');

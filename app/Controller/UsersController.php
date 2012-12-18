@@ -219,6 +219,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Sectors/view');
     $this->Acl->allow($group, 'controllers/Events/index');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/view');
     echo "done<br />";
 
     /* allow 'crc' (ID 4) to do just certain things */
@@ -250,6 +251,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Events/edit');
     $this->Acl->allow($group, 'controllers/Events/delete');
     $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/view');
     echo "done<br />";
 
     /* allow 'hrc' (ID 5) to do just certain things */
