@@ -1,5 +1,5 @@
 <?php $this->set('title_for_layout','Unternehmen '.$company['Company']['name']); ?>
-<h1><?php echo $company['Company']['name']; ?> <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $company['Company']['id']), array('class' => 'btn', 'escape' => false)); ?></h1>
+<h1><?php echo $company['Company']['name']; ?> <?php if($this->Permissions->check('Companies.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $company['Company']['id']), array('class' => 'btn', 'escape' => false)); } ?></h1>
 <br />
 
 <div class="companies view row">

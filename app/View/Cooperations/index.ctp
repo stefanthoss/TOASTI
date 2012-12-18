@@ -1,13 +1,13 @@
 <?php $this->set('title_for_layout', 'Kontaktaufnahmen'); ?>
 
 <ul class="nav nav-tabs">
-<li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Companies.index')) { echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); } ?></li>
+<li><?php if($this->Permissions->check('Contacts.index')) { echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); } ?></li>
 <li class="active"><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Sectors.index')) { echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); } ?></li>
 </ul>
 
-<p><?php echo $this->Html->link('Neue Kontaktaufnahme hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
+<p><?php if($this->Permissions->check('Cooperations.add')) { echo $this->Html->link('Neue Kontaktaufnahme hinzufügen', array('action' => 'add'), array('class' => 'btn')); } ?></p>
 
 <div class="cooperations index">
 	<table class="table table-striped">
@@ -30,8 +30,8 @@
 		<td><?php echo $cooperation['Cooperation']['cooperation_kind']; ?></td>
                 <td><?php if(!empty($cooperation['Cooperation']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $cooperation['Cooperation']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
-			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $cooperation['Cooperation']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
+			<?php if($this->Permissions->check('Cooperations.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $cooperation['Cooperation']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
+			<?php if($this->Permissions->check('Cooperations.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $cooperation['Cooperation']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

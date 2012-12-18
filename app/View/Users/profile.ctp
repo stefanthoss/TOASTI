@@ -3,7 +3,6 @@
 <?php echo $this->Form->create('User');?>
 	<fieldset>
 		<legend>Eigenes Profil bearbeiten</legend>
-		<div class="alert">Dieses Feature ist noch nicht verfügbar.</div>
 	<?php
 		echo $this->Form->label('User.username', 'Nutzername');
 		echo $this->Form->text('username', array('value' => $user['User']['username'], 'disabled' => 'disabled'));
@@ -15,7 +14,7 @@
 	?>
 	</fieldset>
 	<?php
-		echo $this->Form->submit('Änderungen speichern', array('disabled' => 'disabled'));
+		echo $this->Form->submit('Änderungen speichern');
 		echo $this->Form->end();
 	?>
 </div>

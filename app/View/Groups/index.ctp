@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout','Gruppenliste'); ?>
 <ul class="nav nav-tabs">
-<li><?php echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); } ?></li>
 <li class="active"><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
 </ul>
 
@@ -17,8 +17,8 @@
 	<tr>
 		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $group['Group']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
-			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
+			<?php if($this->Permissions->check('Groups.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $group['Group']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
+			<?php if($this->Permissions->check('Groups.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $group['Group']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

@@ -35,74 +35,111 @@ class UsersController extends AppController {
 	$this->set('cooperations', $cooperations);
     }
 
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Der Nutzer wurde hinzugefügt.');
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash('Der Nutzer konnte nicht hinzugefügt werden.');
-			}
-		}
-		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
-	}
-
-	public function edit($id = null) {
-		$this->User->id = $id;
-      		$this->set('user', $this->User->read(null, $id));
-		if (!$this->User->exists()) {
-          		  throw new NotFoundException('Ungültiger Nutzer');
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Der Nutzer wurde gespeichert.');
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash('Der Nutzer konnte nicht gespeichert werden.');
-			}
-		} else {
-			$this->request->data = $this->User->read(null, $id);
-		}
-		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
-	}
-
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->User->id = $id;
-		if (!$this->User->exists()) {
-          		  throw new NotFoundException('Ungültiger Nutzer');
-		}
-		if ($this->User->delete()) {
-			$this->Session->setFlash('Der Nutzer wurde gelöscht.');
+public function add() {
+	if ($this->request->is('post')) {
+		$this->User->create();
+		if ($this->User->save($this->request->data)) {
+			$this->Session->setFlash('Der Nutzer wurde hinzugefügt.');
 			$this->redirect(array('action' => 'index'));
+		} else {
+			$this->Session->setFlash('Der Nutzer konnte nicht hinzugefügt werden.');
 		}
-		$this->Session->setFlash('Der Nutzer wurde nicht gelöscht.');
+	}
+	$groups = $this->User->Group->find('list');
+	$this->set(compact('groups'));
+}
+
+public function edit($id = null) {
+	$this->User->id = $id;
+	$this->set('user', $this->User->read(null, $id));
+	if (!$this->User->exists()) {
+  		  throw new NotFoundException('Ungültiger Nutzer');
+	}
+	if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->User->save($this->request->data)) {
+			$this->Session->setFlash('Der Nutzer wurde gespeichert.');
+			$this->redirect(array('action' => 'index'));
+		} else {
+			$this->Session->setFlash('Der Nutzer konnte nicht gespeichert werden.');
+		}
+	} else {
+		$this->request->data = $this->User->read(null, $id);
+	}
+	$groups = $this->User->Group->find('list');
+	$this->set(compact('groups'));
+}
+
+public function delete($id = null) {
+	if (!$this->request->is('post')) {
+		throw new MethodNotAllowedException();
+	}
+	$this->User->id = $id;
+	if (!$this->User->exists()) {
+  		  throw new NotFoundException('Ungültiger Nutzer');
+	}
+	if ($this->User->delete()) {
+		$this->Session->setFlash('Der Nutzer wurde gelöscht.');
 		$this->redirect(array('action' => 'index'));
 	}
+	$this->Session->setFlash('Der Nutzer wurde nicht gelöscht.');
+	$this->redirect(array('action' => 'index'));
+}
 
-	public function profile() {
-		$id = $this->Auth->user('id');
-		$this->User->id = $id;
-      		$this->set('user', $this->User->read(null, $id));
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Das Profil wurde gespeichert.');
-			} else {
-				$this->Session->setFlash('Das Profil konnte nicht gespeichert werden.');
-			}
+public function profile() {
+	$id = $this->Auth->user('id');
+	$this->User->id = $id;
+	$this->set('user', $this->User->read(null, $id));
+	if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->User->save($this->request->data)) {
+			$this->Session->setFlash('Das Profil wurde gespeichert.');
 		} else {
-			$this->request->data = $this->User->read(null, $id);
+			$this->Session->setFlash('Das Profil konnte nicht gespeichert werden.');
 		}
+	} else {
+		$this->request->data = $this->User->read(null, $id);
 	}
+}
 
 public function login() {
+    $this->Session->delete('Auth.Permissions');
+
     if ($this->request->is('post')) {
         if ($this->Auth->login()) {
+	    $userGroup = $this->Auth->user('group_id');
+	    $aro = $this->Acl->Aro->find('first', array(
+		'conditions' => array(
+		    'Aro.model' => 'Group',
+		    'Aro.foreign_key' => $userGroup
+		)
+	    ));
+	    $acos = $this->Acl->Aco->children();
+	    foreach($acos as $aco){
+$permission = $this->Acl->Aro->Permission->find('first', array(
+        'conditions' => array(
+            'Permission.aro_id' => $aro['Aro']['id'],
+            'Permission.aco_id' => $aco['Aco']['id'],
+        ),
+    ));
+		    if(isset($permission['Permission']['id'])){
+			if ($permission['Permission']['_create'] == 1 ||
+			    $permission['Permission']['_read'] == 1 ||
+			    $permission['Permission']['_update'] == 1 ||
+			    $permission['Permission']['_delete'] == 1) {
+			    	if(!empty($permission['Aco']['parent_id'])){
+			    		$parentAco = $this->Acl->Aco->find('first', array(
+				        'conditions' => array(
+				            'id' => $permission['Aco']['parent_id']
+				        )	
+				    ));
+			            $this->Session->write('Auth.Permissions.'.$parentAco['Aco']['alias'].'.'.$permission['Aco']['alias'], true);
+				} else {
+			    	$this->Session->write('Auth.Permissions.'.$permission['Aco']['alias'], true);
+}
+	                }
+                    }
+	    }
+
+//            $this->Session->setFlash('Erfolgreich eingeloggt.');
             $this->redirect($this->Auth->redirect());
         } else {
             $this->Session->setFlash('Nutzername oder Passwort sind falsch.');
@@ -111,6 +148,8 @@ public function login() {
 }
 
 public function logout() {
+    $this->Session->delete('Auth.Permissions');
+    $this->Session->setFlash('Erfolgreich ausgeloggt.');
     $this->redirect($this->Auth->logout());
 }
 
@@ -120,29 +159,53 @@ public function logout() {
  */
 public function initDB() {
     /* define group rights */
-    echo "define group rights...<br />";
+    echo "define group rights<br />";
     $group = $this->User->Group;
 
     /* allow 'admin' (ID 1) to do everything */
-    echo "allow admin<br />";
+    echo "rights for admin... ";
     $group->id = 1;
     $this->Acl->allow($group, 'controllers');
+    echo "done<br />";
 
     /* allow 'board' (ID 2) to do everything in companies */
-    echo "allow board<br />";
+    echo "rights for board... ";
     $group->id = 2;
     $this->Acl->deny($group, 'controllers');
-    $this->Acl->allow($group, 'controllers/Companies');
-    $this->Acl->allow($group, 'controllers/Contacts');
-    $this->Acl->allow($group, 'controllers/Cooperations');
-    $this->Acl->allow($group, 'controllers/Sectors');
-    $this->Acl->allow($group, 'controllers/Events');
+    $this->Acl->allow($group, 'controllers/Companies/index');
+    $this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Companies/add');
+    $this->Acl->allow($group, 'controllers/Companies/edit');
+    $this->Acl->allow($group, 'controllers/Companies/delete');
+    $this->Acl->allow($group, 'controllers/Contacts/index');
+    $this->Acl->allow($group, 'controllers/Contacts/view');
+    $this->Acl->allow($group, 'controllers/Contacts/add');
+    $this->Acl->allow($group, 'controllers/Contacts/edit');
+    $this->Acl->allow($group, 'controllers/Contacts/delete');
+    $this->Acl->allow($group, 'controllers/Cooperations/index');
+    $this->Acl->allow($group, 'controllers/Cooperations/view');
+    $this->Acl->allow($group, 'controllers/Cooperations/add');
+    $this->Acl->allow($group, 'controllers/Cooperations/edit');
+    $this->Acl->allow($group, 'controllers/Cooperations/delete');
+    $this->Acl->allow($group, 'controllers/Sectors/index');
+    $this->Acl->allow($group, 'controllers/Sectors/add');
+    $this->Acl->allow($group, 'controllers/Sectors/edit');
+    $this->Acl->allow($group, 'controllers/Sectors/delete');
+    $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/add');
+    $this->Acl->allow($group, 'controllers/Events/edit');
+    $this->Acl->allow($group, 'controllers/Events/delete');
     $this->Acl->allow($group, 'controllers/Groups/index');
-    $this->Acl->allow($group, 'controllers/Users');
-    $this->Acl->deny($group, 'controllers/Users/delete');
+    $this->Acl->allow($group, 'controllers/Groups/view');
+    $this->Acl->allow($group, 'controllers/Users/index');
+    $this->Acl->allow($group, 'controllers/Users/view');
+    $this->Acl->allow($group, 'controllers/Users/add');
+    $this->Acl->allow($group, 'controllers/Users/edit');
+    $this->Acl->allow($group, 'controllers/Users/delete');
+    echo "done<br />";
 
     /* allow 'member' (ID 3) to do just certain things */
-    echo "allow member<br />";
+    echo "rights for member... ";
     $group->id = 3;
     $this->Acl->deny($group, 'controllers');
     $this->Acl->allow($group, 'controllers/Companies/index');
@@ -151,25 +214,55 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Contacts/view');
     $this->Acl->allow($group, 'controllers/Cooperations/index');
     $this->Acl->allow($group, 'controllers/Cooperations/view');
+    $this->Acl->allow($group, 'controllers/Sectors/index');
     $this->Acl->allow($group, 'controllers/Events/index');
     $this->Acl->allow($group, 'controllers/Users/index');
-    $this->Acl->allow($group, 'controllers/Users/profile');
+    echo "done<br />";
 
     /* allow 'crc' (ID 4) to do just certain things */
-    echo "allow crc<br />";
+    echo "rights for crc... ";
     $group->id = 4;
     $this->Acl->deny($group, 'controllers');
-    $this->Acl->allow($group, 'controllers/Companies');
-    $this->Acl->allow($group, 'controllers/Contacts');
-    $this->Acl->allow($group, 'controllers/Cooperations');
-    $this->Acl->allow($group, 'controllers/Sectors');
+    $this->Acl->allow($group, 'controllers/Companies/index');
+    $this->Acl->allow($group, 'controllers/Companies/view');
+    $this->Acl->allow($group, 'controllers/Companies/add');
+    $this->Acl->allow($group, 'controllers/Companies/edit');
+    $this->Acl->allow($group, 'controllers/Companies/delete');
+    $this->Acl->allow($group, 'controllers/Contacts/index');
+    $this->Acl->allow($group, 'controllers/Contacts/view');
+    $this->Acl->allow($group, 'controllers/Contacts/add');
+    $this->Acl->allow($group, 'controllers/Contacts/edit');
+    $this->Acl->allow($group, 'controllers/Contacts/delete');
+    $this->Acl->allow($group, 'controllers/Cooperations/index');
+    $this->Acl->allow($group, 'controllers/Cooperations/view');
+    $this->Acl->allow($group, 'controllers/Cooperations/add');
+    $this->Acl->allow($group, 'controllers/Cooperations/edit');
+    $this->Acl->allow($group, 'controllers/Cooperations/delete');
+    $this->Acl->allow($group, 'controllers/Sectors/index');
+    $this->Acl->allow($group, 'controllers/Sectors/add');
+    $this->Acl->allow($group, 'controllers/Sectors/edit');
+    $this->Acl->allow($group, 'controllers/Sectors/delete');
     $this->Acl->allow($group, 'controllers/Events/index');
+    $this->Acl->allow($group, 'controllers/Events/add');
     $this->Acl->allow($group, 'controllers/Events/edit');
+    $this->Acl->allow($group, 'controllers/Events/delete');
     $this->Acl->allow($group, 'controllers/Users/index');
-    $this->Acl->allow($group, 'controllers/Users/profile');
+    echo "done<br />";
+
+    /* allow 'hrc' (ID 5) to do just certain things */
+    echo "rights for hrc... ";
+    $group->id = 5;
+    $this->Acl->deny($group, 'controllers');
+    echo "done<br />";
+
+    /* allow 'alumni' (ID 6) to do just certain things */
+    echo "rights for alumni... ";
+    $group->id = 6;
+    $this->Acl->deny($group, 'controllers');
+    echo "done<br />";
 
     /* done message */
-    echo "all done";
+    echo "<br />all done<br />";
     exit;
 }
 }

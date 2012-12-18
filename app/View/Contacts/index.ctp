@@ -1,13 +1,13 @@
 <?php $this->set('title_for_layout','Kontaktpersonen'); ?>
 
 <ul class="nav nav-tabs">
-<li><?php echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Companies.index')) { echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); } ?></li>
 <li class="active"><?php echo $this->Html->link('Kontaktpersonen', array('controller' => 'contacts', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Cooperations.index')) { echo $this->Html->link('Kontaktaufnahmen', array('controller' => 'cooperations', 'action' => 'index')); } ?></li>
+<li><?php if($this->Permissions->check('Sectors.index')) { echo $this->Html->link('Unternehmensbranchen', array('controller' => 'sectors', 'action' => 'index')); } ?></li>
 </ul>
 
-<p><?php echo $this->Html->link('Neue Kontaktperson hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
+<p><?php if($this->Permissions->check('Contacts.add')) { echo $this->Html->link('Neue Kontaktperson hinzufügen', array('action' => 'add'), array('class' => 'btn')); } ?></p>
 
 <div class="contacts index">
 	<table class="table table-striped">
@@ -35,8 +35,8 @@
 		<td><?php echo $contact['Contact']['country']; ?></td>
         <td><?php if(!empty($contact['Contact']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $contact['Contact']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
-			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $contact['Contact']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
+			<?php if($this->Permissions->check('Contacts.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $contact['Contact']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
+			<?php if($this->Permissions->check('Contacts.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $contact['Contact']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

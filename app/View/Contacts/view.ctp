@@ -1,5 +1,5 @@
 <?php $this->set('title_for_layout', $contact['Contact']['first_name'].' '.$contact['Contact']['name']); ?>
-<h1><?php echo $contact['Contact']['gender']; ?> <?php echo $contact['Contact']['title']; ?> <?php echo $contact['Contact']['first_name']; ?> <?php echo $contact['Contact']['name']; ?> <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $contact['Contact']['id']), array('class' => 'btn', 'escape' => false)); ?></h1>
+<h1><?php echo $contact['Contact']['gender']; ?> <?php if($this->Permissions->check('Contacts.edit')) { echo $contact['Contact']['title']; ?> <?php echo $contact['Contact']['first_name']; ?> <?php echo $contact['Contact']['name']; ?> <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $contact['Contact']['id']), array('class' => 'btn', 'escape' => false)); } ?></h1>
 <br />
 
 <div class="contacts view row">

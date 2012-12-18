@@ -2,7 +2,7 @@
 
 <h1>Veranstaltungen</h1>
 
-<p><?php echo $this->Html->link('Neue Veranstaltung hinzufügen', array('action' => 'add'), array('class' => 'btn')); ?></p>
+<p><?php if($this->Permissions->check('Events.add')) { echo $this->Html->link('Neue Veranstaltung hinzufügen', array('action' => 'add'), array('class' => 'btn')); } ?></p>
 
 <div class="events index">
 <table class="table table-striped">
@@ -15,7 +15,7 @@
     <tr>
         <td><?php echo $event['Event']['name']; ?></td>
 	<td class="actions">
-		<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $event['Event']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
+		<?php if($this->Permissions->check('Events.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $event['Event']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 	</td>
     </tr>
     <?php endforeach; ?>

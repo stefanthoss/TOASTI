@@ -50,7 +50,7 @@ echo $this->fetch('script');
             </ul>
             <ul class="nav pull-right">
               <?php if(isset($current_user)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['first_name'].' '.$current_user['User']['name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['full_name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
               <?php } else { ?>
@@ -69,6 +69,13 @@ echo $this->fetch('script');
      <?php echo $this->Session->flash(); ?>
 
      <?php echo $this->fetch('content'); ?>
+
+<?php if (Configure::read('debug') > 1) :?>
+    <div id="cakeSession" class="cakeSession">
+        <h3>Session Info:</h3>
+        <?php pr($_SESSION); ?>
+    </div>
+<?php endif; ?>
 
       <hr>
 

@@ -13,4 +13,4 @@
 	</fieldset>
 <?php echo $this->Form->end('Änderungen speichern');?>
 </div>
-<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Nutzer löschen', array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du den Nutzer '.$user['User']['username'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); ?>
+<?php if($this->Permissions->check('Users.delete')) { echo $this->Form->postLink('<i class="icon-trash icon-white"></i> Nutzer löschen', array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger', 'escape' => false), 'Bist du dir sicher, dass du den Nutzer '.$user['User']['username'].' löschen willst? Das kann nicht rückgängig gemacht werden.'); } ?>

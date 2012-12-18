@@ -1,5 +1,5 @@
 <?php $this->set('title_for_layout', 'Kontaktaufnahme'); ?>
-<h1>Kontaktaufnahme <?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $cooperation['Cooperation']['id']), array('class' => 'btn', 'escape' => false)); ?></h1>
+<h1>Kontaktaufnahme <?php if($this->Permissions->check('Cooperations.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $cooperation['Cooperation']['id']), array('class' => 'btn', 'escape' => false)); } ?></h1>
 <br />
 
 <div class="cooperations view row">

@@ -1,10 +1,10 @@
 <?php $this->set('title_for_layout','Nutzerliste'); ?>
 <ul class="nav nav-tabs">
 <li class="active"><?php echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); ?></li>
-<li><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
+<li><?php if($this->Permissions->check('Groups.index')) { echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); } ?></li>
 </ul>
 
-<p><?php echo $this->Html->link('Neuen Nutzer hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); ?></p>
+<p><?php if($this->Permissions->check('Users.add')) { echo $this->Html->link('Neuen Nutzer hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); } ?></p>
 
 <div class="users index">
 	<table class="table table-striped">
@@ -23,8 +23,8 @@
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 		<td><?php echo h($user['Group']['name']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); ?>
-			<?php echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $user['User']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); ?>
+			<?php if($this->Permissions->check('Users.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
+			<?php if($this->Permissions->check('Users.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $user['User']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
