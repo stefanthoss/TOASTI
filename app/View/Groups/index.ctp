@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout','Gruppenliste'); ?>
 <ul class="nav nav-tabs">
-<li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Nutzerliste', array('controller' => 'users', 'action' => 'index')); } ?></li>
+<li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Mitgliederliste', array('controller' => 'users', 'action' => 'index')); } ?></li>
 <li class="active"><?php echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); ?></li>
 </ul>
 

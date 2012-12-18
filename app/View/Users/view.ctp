@@ -1,4 +1,4 @@
-<?php $this->set('title_for_layout','Nutzeransicht'); ?>
+<?php $this->set('title_for_layout','Mitgliederansicht'); ?>
 <h1><?php echo $user['User']['first_name']; ?> <?php echo $user['User']['name']; ?> <?php if($this->Permissions->check('Users.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $user['User']['id']), array('class' => 'btn', 'escape' => false)); } ?></h1>
 <br />
 

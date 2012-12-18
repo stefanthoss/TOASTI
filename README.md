@@ -10,10 +10,8 @@ Komponenten
 TOASTI basiert auf folgenden Frameworks/Bibliotheken:
 
 * [CakePHP](http://cakephp.org/) 2.1
-* [jQuery](http://jquery.com/) 1.7
-* [Bootstrap](http://twitter.github.com/bootstrap/) 2.0
-* [Bootstrap Collapse Plugin](http://twitter.github.com/bootstrap/javascript.html#collapse)
-* [Bootstrap Dropdown Plugin](http://twitter.github.com/bootstrap/javascript.html#dropdowns)
+* [jQuery](http://jquery.com/) 1.8.3
+* [Bootstrap](http://twitter.github.com/bootstrap/) 2.2.2
 * [Cakephp-Bootstrappifier](https://github.com/mtkocak/Cakephp-Bootstrappifier) 2012-03-27
 
 
