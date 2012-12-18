@@ -10,6 +10,14 @@ class SectorsController extends AppController {
         $this->set('sectors', $this->Sector->find('all'));
     }
 
+    public function view($id = null) {
+        $this->Sector->id = $id;
+        if (!$this->Sector->exists()) {
+            throw new NotFoundException('Ungültige Branche');
+        }
+        $this->set('sector', $this->Sector->read(null, $id));
+    }
+
 public function add() {
         if ($this->request->is('post')) {
             if ($this->Sector->save($this->request->data)) {
