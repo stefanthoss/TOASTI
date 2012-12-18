@@ -35,6 +35,7 @@ class AppController extends Controller {
     public $components = array(
         'Acl',
         'Auth' => array(
+	    'flashElement' => 'alert_error',
             'authorize' => array(
                 'Actions' => array('actionPath' => 'controllers')
             )

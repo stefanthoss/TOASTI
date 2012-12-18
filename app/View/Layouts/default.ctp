@@ -64,7 +64,7 @@ echo $this->fetch('script');
 
     <div class="container">
 
-     <?php echo $this->Session->flash(); ?>
+     <?php echo $this->Session->flash('flash', array('element' => 'alert_info')); ?>
 
      <?php echo $this->fetch('content'); ?>
 

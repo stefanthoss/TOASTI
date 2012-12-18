@@ -139,7 +139,7 @@ $permission = $this->Acl->Aro->Permission->find('first', array(
                     }
 	    }
 
-//            $this->Session->setFlash('Erfolgreich eingeloggt.');
+            $this->Session->setFlash('Erfolgreich eingeloggt.');
             $this->redirect($this->Auth->redirect());
         } else {
             $this->Session->setFlash('Nutzername oder Passwort sind falsch.');
