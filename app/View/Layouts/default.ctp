@@ -34,8 +34,14 @@ echo $this->fetch('script');
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+          <button type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <?php echo $this->Html->link(Configure::read('System.name'), array('controller' => 'pages', 'action' => 'home'), array('class' => 'brand')); ?>
-          <ul class="nav">
+          <div class="nav-collapse collapse">
+         <ul class="nav">
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Unternehmen<b class="caret"></b></a>
               <ul class="dropdown-menu">
               <li><?php if($this->Permissions->check('Companies.index')) { echo $this->Html->link('Unternehmen', array('controller' => 'companies', 'action' => 'index')); } ?></li>
@@ -44,11 +50,16 @@ echo $this->fetch('script');
               <li><?php if($this->Permissions->check('Sectors.index')) { echo $this->Html->link('Branchen', array('controller' => 'sectors', 'action' => 'index')); } ?></li>
             </ul></li>
             <li><?php if($this->Permissions->check('Events.index')) { echo $this->Html->link('Veranstaltungen', array('controller' => 'events', 'action' => 'index')); } ?></li>
+            <?php if($this->Permissions->check('Users.index') && !$this->Permissions->check('Groups.index')) { ?>
+              <li><?php echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); ?></li>
+            <?php } ?>
+            <?php if($this->Permissions->check('Users.index') && $this->Permissions->check('Groups.index')) { ?>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mitglieder<b class="caret"></b></a>
               <ul class="dropdown-menu">
-              <li><?php if($this->Permissions->check('Users.index')) { echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); } ?></li>
-              <li><?php if($this->Permissions->check('Groups.index')) { echo $this->Html->link('Gruppen', array('controller' => 'groups', 'action' => 'index')); } ?></li>
+              <li><?php echo $this->Html->link('Mitglieder', array('controller' => 'users', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Gruppen', array('controller' => 'groups', 'action' => 'index')); ?></li>
             </ul></li>
+            <?php } ?>
            </ul>
 
            <ul class="nav pull-right">
@@ -61,7 +72,7 @@ echo $this->fetch('script');
              <?php } else { ?>
                <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); ?></li>
              <?php } ?>
-            </ul>
+            </ul></div>
           </div>
       </div>
     </div>
