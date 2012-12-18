@@ -20,6 +20,7 @@
     <tr>
         <td><?php echo $sector['Sector']['name']; ?></td>
 	<td class="actions">
+		<?php if($this->Permissions->check('Sectors.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $sector['Sector']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
 		<?php if($this->Permissions->check('Sectors.edit')) { echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit', $sector['Sector']['id']), array('class' => 'btn', 'escape' => false, 'title' => 'Bearbeiten')); } ?>
 	</td>
     </tr>

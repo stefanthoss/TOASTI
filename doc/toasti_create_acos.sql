@@ -1,8 +1,10 @@
 /*
 -- Query: SELECT * FROM toasti_db.acos
--- Date: 2012-08-02 12:05
+LIMIT 0, 1000
+
+-- Date: 2012-12-18 18:06
 */
-INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (50,NULL,NULL,NULL,'controllers',1,96);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (50,NULL,NULL,NULL,'controllers',1,98);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (51,50,NULL,NULL,'Companies',2,13);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (52,51,NULL,NULL,'index',3,4);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (53,51,NULL,NULL,'view',5,6);
@@ -44,9 +46,10 @@ INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`)
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (100,97,NULL,NULL,'add',79,80);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (101,97,NULL,NULL,'delete',81,82);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (102,97,NULL,NULL,'edit',83,84);
-INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (103,50,NULL,NULL,'Sectors',86,95);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (103,50,NULL,NULL,'Sectors',86,97);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (104,103,NULL,NULL,'index',87,88);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (105,103,NULL,NULL,'add',89,90);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (106,103,NULL,NULL,'delete',91,92);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (107,103,NULL,NULL,'edit',93,94);
 INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (108,65,NULL,NULL,'profile',47,48);
+INSERT INTO `acos` (`id`,`parent_id`,`model`,`foreign_key`,`alias`,`lft`,`rght`) VALUES (109,103,NULL,NULL,'view',95,96);

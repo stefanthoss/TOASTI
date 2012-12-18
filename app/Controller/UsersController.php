@@ -188,6 +188,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations/edit');
     $this->Acl->allow($group, 'controllers/Cooperations/delete');
     $this->Acl->allow($group, 'controllers/Sectors/index');
+    $this->Acl->allow($group, 'controllers/Sectors/view');
     $this->Acl->allow($group, 'controllers/Sectors/add');
     $this->Acl->allow($group, 'controllers/Sectors/edit');
     $this->Acl->allow($group, 'controllers/Sectors/delete');
@@ -215,6 +216,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations/index');
     $this->Acl->allow($group, 'controllers/Cooperations/view');
     $this->Acl->allow($group, 'controllers/Sectors/index');
+    $this->Acl->allow($group, 'controllers/Sectors/view');
     $this->Acl->allow($group, 'controllers/Events/index');
     $this->Acl->allow($group, 'controllers/Users/index');
     echo "done<br />";
@@ -239,6 +241,7 @@ public function initDB() {
     $this->Acl->allow($group, 'controllers/Cooperations/edit');
     $this->Acl->allow($group, 'controllers/Cooperations/delete');
     $this->Acl->allow($group, 'controllers/Sectors/index');
+    $this->Acl->allow($group, 'controllers/Sectors/view');
     $this->Acl->allow($group, 'controllers/Sectors/add');
     $this->Acl->allow($group, 'controllers/Sectors/edit');
     $this->Acl->allow($group, 'controllers/Sectors/delete');

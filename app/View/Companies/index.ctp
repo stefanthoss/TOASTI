@@ -15,7 +15,7 @@
         <th><?php echo $this->Paginator->sort('name', 'Name');?></th>
         <th><?php echo $this->Paginator->sort('city', 'Stadt');?></th>
         <th><?php echo $this->Paginator->sort('country', 'Land');?></th>
-        <th><?php echo $this->Paginator->sort('sector', 'Branche');?></th>
+        <th>Branche</th>
         <th>Notiz</th>
         <th class="actions">Aktionen</th>
     </tr>
@@ -25,7 +25,7 @@
         <td><?php echo $company['Company']['name']; ?></td>
         <td><?php echo $company['Company']['city']; ?></td>
         <td><?php echo $company['Company']['country']; ?></td>
-        <td><?php echo $company['Sector']['name']; ?></td>
+	<td><?php echo $this->Html->link($company['Sector']['name'], array('controller' => 'sectors', 'action' => 'view', $company['Sector']['id'])); ?></td>
         <td><?php if(!empty($company['Company']['note'])) { echo '<i class="icon-comment"></i>'; } ?></td>
 	<td class="actions">
 		<?php if($this->Permissions->check('Companies.view')) { echo $this->Html->link('<i class="icon-info-sign icon-white"></i>', array('action' => 'view', $company['Company']['id']), array('class' => 'btn btn-info', 'escape' => false, 'title' => 'Anzeigen')); } ?>
