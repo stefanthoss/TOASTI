@@ -12,7 +12,7 @@
 			<th><?php echo $this->Paginator->sort('username', 'Nutzername/E-Mail');?></th>
 			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
 			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
-			<th><?php echo $this->Paginator->sort('group_id', 'Gruppe');?></th>
+			<th>Gruppe</th>
 			<th class="actions">Aktionen</th>
 	</tr>
 	<?php

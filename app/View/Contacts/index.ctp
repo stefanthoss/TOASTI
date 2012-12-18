@@ -16,7 +16,7 @@
 			<th></th>
 			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
 			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
-			<th><?php echo $this->Paginator->sort('company', 'Unternehmen');?></th>
+			<th>Unternehmen</th>
 			<th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
 			<th><?php echo $this->Paginator->sort('city', 'Stadt');?></th>
 			<th><?php echo $this->Paginator->sort('country', 'Land');?></th>

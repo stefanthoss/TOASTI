@@ -12,9 +12,9 @@
 <div class="cooperations index">
 	<table class="table table-striped">
 	<tr>
-			<th><?php echo $this->Paginator->sort('contact', 'Kontaktperson');?></th>
-			<th><?php echo $this->Paginator->sort('event', 'Veranstaltung');?></th>
-			<th><?php echo $this->Paginator->sort('user', 'VWI-Mitglied');?></th>
+			<th>Kontaktperson</th>
+			<th>Veranstaltung</th>
+			<th>VWI-Mitglied</th>
 			<th><?php echo $this->Paginator->sort('date', 'Datum');?></th>
 			<th><?php echo $this->Paginator->sort('cooperation_kind', 'Kooperationsart');?></th>
 			<th>Notiz</th>
