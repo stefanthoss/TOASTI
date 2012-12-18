@@ -4,12 +4,12 @@
 <li><?php if($this->Permissions->check('Groups.index')) { echo $this->Html->link('Gruppenliste', array('controller' => 'groups', 'action' => 'index')); } ?></li>
 </ul>
 
-<p><?php if($this->Permissions->check('Users.add')) { echo $this->Html->link('Neuen Nutzer hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); } ?></p>
+<p><?php if($this->Permissions->check('Users.add')) { echo $this->Html->link('Neues Mitglied hinzufügen', array('controller' => 'users', 'action' => 'add'), array('class' => 'btn')); } ?></p>
 
 <div class="users index">
 	<table class="table table-striped">
 	<tr>
-			<th><?php echo $this->Paginator->sort('username', 'Nutzername');?></th>
+			<th><?php echo $this->Paginator->sort('username', 'Nutzername/E-Mail');?></th>
 			<th><?php echo $this->Paginator->sort('first_name', 'Vorname');?></th>
 			<th><?php echo $this->Paginator->sort('name', 'Nachname');?></th>
 			<th><?php echo $this->Paginator->sort('group_id', 'Gruppe');?></th>

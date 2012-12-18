@@ -1,4 +1,4 @@
-<?php $this->set('title_for_layout','Nutzer hinzufügen'); ?>
+<?php $this->set('title_for_layout','Mitglied hinzufügen'); ?>
 <div class="users form">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

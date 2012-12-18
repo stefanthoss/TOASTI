@@ -48,7 +48,7 @@ echo $this->fetch('script');
             </ul>
             <ul class="nav pull-right">
               <?php if(isset($current_user)) { ?>
-              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['full_name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
+              <li><p class="navbar-text">Eingeloggt als <?php echo $this->Html->link($current_user['User']['first_name'].' '.$current_user['User']['name'], array('controller' => 'users', 'action' => 'profile')); echo ' (Gruppe '.$current_user['Group']['name'].')'; ?></li>
               <li class="divider-vertical"></li>
               <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
               <?php } else { ?>
@@ -78,7 +78,7 @@ echo $this->fetch('script');
       <hr>
 
       <footer>
-        <p>&copy; <?php echo Configure::read('System.author'); ?></p>
+        <p>&copy; <?php echo Configure::read('System.author'); echo $this->Html->image('vwi_estiem_logo.png', array('alt' => Configure::read('System.author'), 'align' => 'right')); ?></p>
       </footer>
 
     </div>
