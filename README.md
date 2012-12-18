@@ -21,7 +21,7 @@ Installation auf einem Server
 ----------
 
 - Einen Apache und einen MySQL-Server vorbereiten (z.B. XAMPP).
-- TOASTI bei github.com herunterladen und entpacken ins htdocs-Verzeichnis (z.B. /htdocs/TOASTI/).
+- TOASTI bei http://www.github.com herunterladen und entpacken ins htdocs-Verzeichnis (z.B. /htdocs/TOASTI/).
 - Ausführen: /htdocs/TOASTI/doc/toasti_create_tables.sql
 - CakePHP v2.1.5 herunterladen und im Apache in das htdocs-Verzeichnis entpacken (z.B. /htdocs/cakephp/).
 - Testen, ob die Startseite von CakePHP angezeigt wird. Diese sollte mehrere Probleme bzgl. der Config melden.
@@ -33,8 +33,9 @@ Installation auf einem Server
 - Die Startseite von CakePHP sollte keine Fehler mehr anzeigen.
 - Das Verzeichnis /htdocs/cakephp/app/Config/ kopieren nach: /htdocs/TOASTI/app/
 - Das Verzeichnis von CakePHP löschen.
-- Jetzt sollte die Startseite von TOASTI erscheinen.
-- Für die Berechtigungen müssen zunächst die Zugriffspunkte in der Datenbank definiert werden (siehe Datei doc/toasti_create_acos.sql).
+- Jetzt sollte unter http://localhost/TOASTI/ die Startseite von TOASTI erscheinen.
+- Ausführen: /doc/toasti_create_acos.sql
+- In der Datei /app/Controller/UsersController.php die Zeile 6 auskommentieren: `$this->Auth->allow('login', 'logout');`
 - In der Datei /app/Controller/UsersController.php die Zeile 7 einkommentieren: `$this->Auth->allow('*');`
 - In der Datei /app/Controller/GroupsController.php die Zeile 12 einkommentieren: `$this->Auth->allow('*');`
 - Im Browser über toasti/groups/add folgende vier Gruppen hinzufügen: `Admin, Vorstand, Orgateam, CRC`
