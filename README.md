@@ -72,6 +72,26 @@ Installation für Entwickler
 - Danach die Änderungen in UsersController.php und in GroupsController.php wieder rückgängig machen, damit nur noch Administratoren andere Nutzer registrieren können.
 
 
+Update einer vorhandenen Installation
+----------
+
+- Auf dem Server das Verzeichnis /app/Config/ sichern (oder gleich ein vollständiges Backup).
+- Die neueste Version von TOASTI hochladen.
+- Das Verzeichnis /app/Config/ dort einfügen.
+
+OPTIONAL - Falls es neue Berechtigungen und/oder Gruppen gibt:
+- Falls man im Browser noch in TOASTI eingeloggt ist: Ausloggen
+- Für neue Berechtigungen:
+1. Tabelle acos leeren
+2. Ausführen: /doc/toasti_create_acos.sql
+- In der Datei /app/Controller/UsersController.php die Zeile 6 auskommentieren: `$this->Auth->allow('login', 'logout');`
+- In der Datei /app/Controller/UsersController.php die Zeile 7 einkommentieren: `$this->Auth->allow('*');`
+- In der Datei /app/Controller/GroupsController.php die Zeile 12 einkommentieren: `$this->Auth->allow('*');`
+- Neue Gruppen über toasti/groups/add hinzufügen. ACHTUNG: Hierbei die gleiche Reihenfolge beachten, wie sie initdb erwartet!
+- Im Browser /toasti/users/initdb aufrufen.
+- Danach die Änderungen in UsersController.php und in GroupsController.php wieder rückgängig machen, damit nur noch Administratoren andere Nutzer registrieren können.
+
+
 Lizenz
 ----------
 
