@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout', 'Kontaktaufnahmen'); ?>
 
-<h1>Kontaktpersonen</h1>
+<h1>Kontaktaufnahmen</h1>
 
 <p><?php if($this->Permissions->check('Cooperations.add')) { echo $this->Html->link('Neue Kontaktaufnahme hinzufügen', array('action' => 'add'), array('class' => 'btn')); } ?></p>
 
