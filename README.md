@@ -26,6 +26,7 @@ Installation auf einem Server
 - Bei CakePHP ins Verzeichnis /htdocs/cakephp/app/Config/ wechseln.
 - core.php: Salt beliebig austauschen (Länge beibehalten)
 - core.php: Seed beliebig austauschen (Länge beibehalten)
+- core.php: Zeilen 243-245 löschen. Dadurch wird verhindert, dass evtl. Apc-Caching verwendet wird.
 - database.php.default: Umbenennen in "database.php"
 - database.php: Datenbankdaten für das default-Array angeben
 - Die Startseite von CakePHP sollte keine Fehler mehr anzeigen.
@@ -56,6 +57,7 @@ Installation für Entwickler
 - Bei CakePHP ins Verzeichnis /app/Config/ wechseln.
 - core.php: Salt beliebig austauschen (Länge beibehalten)
 - core.php: Seed beliebig austauschen (Länge beibehalten)
+- core.php: Zeilen 243-245 löschen. Dadurch wird verhindert, dass evtl. Apc-Caching verwendet wird.
 - database.php.default: Umbenennen in "database.php"
 - database.php: Datenbankdaten für das default-Array angeben
 - Die Startseite von CakePHP sollte keine Fehler mehr anzeigen.
